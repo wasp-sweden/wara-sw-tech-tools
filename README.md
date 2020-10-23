@@ -26,5 +26,5 @@ This repository uses [OVE](https://github.com/Ericsson/ove).
 tbd (TODO: include a quick-start one-liner analogous to the OVE tutorial one)
 
 # Backlog
-See the (Backlog)[https://github.com/wasp-sweden/wara-sw-tech-tools/blob/main/README.md] file for details.
+See the [Backlog](https://github.com/wasp-sweden/wara-sw-tech-tools/blob/main/README.md) file for details.
 
