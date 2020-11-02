@@ -1,0 +1,2 @@
+# name	fetch							push							rev
+redis	ssh://github.com/redis/redis	ssh://github.com/redis/redis	b5f3996250eac3adbda407086fc519aebcb29797 # master
