@@ -1,4 +1,4 @@
 redis:
   deps:
-  needs:
+  needs: make gcc pkg-config
   path: redis
