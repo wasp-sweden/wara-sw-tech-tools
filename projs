@@ -1,4 +1,4 @@
 redis:
   deps:
-  needs: make gcc pkg-config
+  needs: make gcc pkg-config tcl
   path: redis
