@@ -1,5 +1,5 @@
+---
 actor-framework:
-  deps:
   needs:
     cmake
     gcc
