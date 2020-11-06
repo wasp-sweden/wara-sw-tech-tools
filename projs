@@ -1,8 +1,8 @@
----
-actor-framework:
+actor_framework:
+  deps:
   needs:
     cmake
     gcc
-    libpthread-stubs0-dev
+    #libpthread-stubs0-dev
   path:
     actor-framework
