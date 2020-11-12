@@ -2,7 +2,8 @@ actor_framework:
   deps:
   needs:
     cmake
-    gcc
+    g++
+    libssl-dev
     #libpthread-stubs0-dev
   path:
     actor-framework
