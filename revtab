@@ -1,3 +1,5 @@
 # name       fetch URL                                    push URL                                     rev
 
 actor-framework https://github.com/actor-framework/actor-framework  https://github.com/actor-framework/actor-framework  master
+
+redis	https://github.com/redis/redis	https://github.com/redis/redis	b5f3996250eac3adbda407086fc519aebcb29797 # master

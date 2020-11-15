@@ -4,6 +4,15 @@ actor_framework:
     cmake
     g++
     libssl-dev
-    #libpthread-stubs0-dev
   path:
     actor-framework
+
+redis:
+  deps:
+  needs: 
+    make
+    gcc
+    pkg-config
+    tcl
+  path:
+    redis
