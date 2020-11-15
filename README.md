@@ -23,7 +23,12 @@ WASP [Research Arena for Software
 This repository uses [OVE](https://github.com/Ericsson/ove).
 
 # Installing and running
-tbd (TODO: include a quick-start one-liner analogous to the OVE tutorial one)
+To set up the workspace run the oneliner:
+  `curl -sSL https://raw.githubusercontent.com/Ericsson/ove/master/setup | bash -s WARA-SW https://github.com/wasp-sweden/wara-sw-tech-tools`
+
+This will create an OVE workspace directory with the name WARA-SW. Follow the setup script by entering the workspace directory and running 'source ove'. You can now clone the repositories of the software corpus by running 'ove fetch'.
+
+For more information, read the [OVE Tutorial](https://github.com/Ericsson/ove-tutorial).
 
 # Backlog
 See the [Backlog](https://github.com/wasp-sweden/wara-sw-tech-tools/blob/main/README.md) file for details.
