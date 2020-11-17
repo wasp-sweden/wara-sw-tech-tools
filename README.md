@@ -26,7 +26,9 @@ This repository uses [OVE](https://github.com/Ericsson/ove).
 To set up the workspace run the oneliner:
   `curl -sSL https://raw.githubusercontent.com/Ericsson/ove/master/setup | bash -s WARA-SW https://github.com/wasp-sweden/wara-sw-tech-tools`
 
-This will create an OVE workspace directory with the name WARA-SW. Follow the setup script by entering the workspace directory and running 'source ove'. You can now clone the repositories of the software corpus by running 'ove fetch'.
+This will create an OVE workspace directory with the name WARA-SW. Follow the setup script by entering the workspace directory and running `source ove`. You can now clone the repositories of the software corpus by running `ove fetch`.
+
+If you have Docker installed, you can launch a pristine Ubuntu environment for building and testing the corpus projects using `ove docker`. Running `ove buildme` in this container will prompt you to install missing dependencies using `sudo apt install`.
 
 For more information, read the [OVE Tutorial](https://github.com/Ericsson/ove-tutorial).
 
