@@ -1,0 +1,27 @@
+#!/bin/bash
+
+if [ "$OVE_BASE_DIR" == "" ]; then
+		echo "Please run in an OVE environment."
+		exit 1
+fi
+
+cd "$OVE_BASE_DIR"
+
+NAME=ove-wara-container
+CLEAN=0
+docker inspect "$NAME" 2&> /dev/null || CLEAN=1
+[ "$1" == "--clean" ] && CLEAN=1
+
+cd "$OVE_BASE_DIR"
+
+if [ $CLEAN == 1 ]; then
+		echo "Starting clean environment..."
+		docker rm -f "$NAME" 2> /dev/null
+		cp "$OVE_BASE_DIR/.ove/ove.bash" "$OVE_PROJECT_DIR/docker/"
+		docker build --build-arg UID --build-arg GID -t ove "$OVE_PROJECT_DIR/docker" || exit 1
+		docker run -ti --name="$NAME" -v="$PWD:/ove" ove
+else
+		echo "Reattaching..."
+		docker start -ai "$NAME"
+fi
+
