@@ -16,3 +16,18 @@ redis:
     tcl
   path:
     redis
+
+titan_core:
+  deps:
+  needs:
+    make
+    bison
+    g++
+    flex
+    libssl-dev
+    libxml2-dev
+    libedit-dev
+    openjdk-8-jdk
+    expect
+  path:
+    titan.core
