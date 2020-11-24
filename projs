@@ -31,3 +31,11 @@ titan_core:
     expect
   path:
     titan.core
+
+llvm:
+  deps:
+  needs:
+    cmake
+    python3
+  path:
+    llvm

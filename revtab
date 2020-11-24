@@ -1,7 +1,6 @@
 # name       fetch URL                                    push URL                                     rev
 
 actor-framework https://github.com/actor-framework/actor-framework  https://github.com/actor-framework/actor-framework  master
-
 redis	https://github.com/redis/redis	https://github.com/redis/redis	b5f3996250eac3adbda407086fc519aebcb29797 # master
-
 titan.core https://github.com/eclipse/titan.core https://github.com/eclipse/titan.core master
+llvm    https://github.com/llvm/llvm-project    https://github.com/llvm/llvm-project master
