@@ -35,7 +35,9 @@ titan_core:
 llvm:
   deps:
   needs:
+    g++
     cmake
     python3
+    ninja-build
   path:
     llvm

@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 mkdir build
 cd build
-cmake -DLLVM_ENABLE_PROJECTS="clang-tools-extra" ../llvm
+cmake -G Ninja -DLLVM_ENABLE_PROJECTS="clang-tools-extra" ../llvm
