@@ -9,7 +9,7 @@ cd "$OVE_BASE_DIR"
 
 NAME=ove-wara-container
 CLEAN=0
-docker inspect "$NAME" 2&> /dev/null || CLEAN=1
+docker inspect "$NAME" &> /dev/null || CLEAN=1
 [ "$1" == "--clean" ] && CLEAN=1
 
 cd "$OVE_BASE_DIR"
