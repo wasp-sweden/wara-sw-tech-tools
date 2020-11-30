@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 mkdir build
 cd build
-cmake -G Ninja -DLLVM_ENABLE_PROJECTS="clang-tools-extra" ../llvm
+cmake -G Ninja -DCMAKE_INSTALL_PREFIX="$OVE_STAGE_DIR/usr" -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra" ../llvm
