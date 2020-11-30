@@ -30,6 +30,8 @@ This will create an OVE workspace directory with the name WARA-SW. Follow the se
 
 If you have Docker installed, you can launch a pristine Ubuntu environment for building and testing the corpus projects using `ove docker`. Running `ove buildme` in this container will prompt you to install missing dependencies using `sudo apt install`.
 
+Once the corpus is built, `ove systest doxygen-clang-tidy` can be used to run an example invocation of clang-tidy on Doxygen.
+
 For more information, read the [OVE Tutorial](https://github.com/Ericsson/ove-tutorial).
 
 # Backlog

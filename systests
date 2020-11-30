@@ -1,0 +1,4 @@
+# name			timeout (s)	type	path		command
+# ---------------------------------------------------------------------
+doxygen-clang-tidy	0		0	doxygen/build	"python3 ../../llvm/clang-tools-extra/clang-tidy/tool/run-clang-tidy.py"
+
