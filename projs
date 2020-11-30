@@ -41,3 +41,14 @@ llvm:
     ninja-build
   path:
     llvm
+
+doxygen:
+  deps:
+  needs:
+    cmake
+    g++
+    python3
+    flex
+    bison
+  path: doxygen
+
