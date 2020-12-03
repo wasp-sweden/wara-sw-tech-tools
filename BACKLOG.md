@@ -9,14 +9,14 @@
 + [C] build initial list of intended corpus projects
 + [C] build initial list of intended baseline tools
 + [A,N] get one corpus project running, testing
-- [A,N] merge current branches and publish the one-liner
-- [] get clang-tidy running, testing
++ [A,N] merge current branches and publish the one-liner
+- [N] get clang-tidy running, testing
 - [] be able to run tool on corpus project and produce readable results
 - **Milestone 1** completed: 1 tool running on one corpus code base
 
 ## Milestone 2: demonstrator demonstrator
-- [] formulate our requirements for the output format
-- [] check available output formats:
+- [N] formulate our requirements for the output format
+- [A] check available output formats:
      - https://github.com/Ericsson/codechecker
      - OASIS SARIF
      - what output formats do the existing tools support otherwise?
@@ -30,6 +30,8 @@
 - [ALL] "Towards Milestone 3": plan forward
 - [] generate html or pdf output for visualising tool output for public consumption
 - [] package + description: how to build a demonstrator for your tool (consider container image?)
+- [M] try dist build
+- [] c/c++ cache (ccache etc)
 - **Milestone 2** completed: demonstrator demonstrator up and running
 
 ## Milestone 3: scale to breadth and fix all bugs that are in the way (more C/C++ corpus projects and tools)
