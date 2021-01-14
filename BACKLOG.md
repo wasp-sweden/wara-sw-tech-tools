@@ -10,18 +10,26 @@
 + [C] build initial list of intended baseline tools
 + [A,N] get one corpus project running, testing
 + [A,N] merge current branches and publish the one-liner
-- [N] get clang-tidy running, testing
-- [] be able to run tool on corpus project and produce readable results
-- **Milestone 1** completed: 1 tool running on one corpus code base
++ [N] get clang-tidy running, testing
++ [N] be able to run tool on corpus project and produce readable results
++ **Milestone 1** completed: 1 tool running on one corpus code base
 
 ## Milestone 2: demonstrator demonstrator
-- [N] formulate our requirements for the output format
++ [N] formulate our requirements for the output format
+  - mandatory:
+    - source location
+	- bug category marker
+	- human-readable-description
+  - optional:
+    - AST node
+	- links to other relevant source locations
++ [M] try dist build
 - [A] check available output formats:
      - https://github.com/Ericsson/codechecker
      - OASIS SARIF
      - what output formats do the existing tools support otherwise?
 - [] search for tools for comparing outputs of these tools and check for input formats
-     - csv support for various hand-written tools? 
+     - csv support for various hand-written tools?
      - search for existing statistical tools that can: aggregate, normalise, classify, sort, plot (bar charts, violin plots etc.), regression analysis and other correlation mechanisms, diffing
 - [] decide on standard format
 - [] obtain tool output in standard format
@@ -30,7 +38,6 @@
 - [ALL] "Towards Milestone 3": plan forward
 - [] generate html or pdf output for visualising tool output for public consumption
 - [] package + description: how to build a demonstrator for your tool (consider container image?)
-- [M] try dist build
 - [] c/c++ cache (ccache etc)
 - **Milestone 2** completed: demonstrator demonstrator up and running
 
