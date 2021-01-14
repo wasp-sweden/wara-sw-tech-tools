@@ -1,0 +1,9 @@
+#!/bin/bash
+
+name=$1
+
+out="$OVE_BASE_DIR/${name}_clang-tidy.sarif"
+
+python3 $OVE_BASE_DIR/llvm/clang-tools-extra/clang-tidy/tool/run-clang-tidy.py | tee /dev/stderr | $OVE_PROJECT_DIR/sarif-converters/clang-tidy.py > $out
+
+echo "SARIF output saved to $out"
