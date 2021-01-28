@@ -38,5 +38,5 @@ The corpus can then be used as follows:
 3. Tools can now be invoked using `ove <tool> [projects...]`, e.g. `ove spotbugs cassandra` to run SpotBugs on Cassandra.
 
 # Backlog
-See the [Backlog](https://github.com/wasp-sweden/wara-sw-tech-tools/blob/main/README.md) file for details.
+See the [Backlog](https://github.com/wasp-sweden/wara-sw-tech-tools/blob/main/BACKLOG.md) file for details.
 
