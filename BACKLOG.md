@@ -1,19 +1,5 @@
 # Backlog
 
-## Milestone 1: 1 tool running on one corpus code base
-+ [A,N] try out github: ericsson/ove-tutorial
-+ [C] set up wara-sw-tech-tools, give permissions
-+ [C] determine static analysis interchange format: OASIS SARIF https://sarifweb.azurewebsites.net/
-  (implementations exist for C#, Python)
-+ [A,N] set up one C/C++ project so that it can be downloaded, built, tested
-+ [C] build initial list of intended corpus projects
-+ [C] build initial list of intended baseline tools
-+ [A,N] get one corpus project running, testing
-+ [A,N] merge current branches and publish the one-liner
-+ [N] get clang-tidy running, testing
-+ [N] be able to run tool on corpus project and produce readable results
-+ **Milestone 1** completed: 1 tool running on one corpus code base
-
 ## Milestone 2: demonstrator demonstrator
 + [N] formulate our requirements for the output format
   - mandatory:
@@ -43,3 +29,23 @@
 
 ## Milestone 3: scale to breadth and fix all bugs that are in the way (more C/C++ corpus projects and tools)
 - prestudy for dynamic tools in Milestone 4
+
+
+# Completed
+
++ **Milestone 1** completed: 1 tool running on one corpus code base
+
+# Stakeholders
+
+## C/C++
+
+(no current stakeholders)
+
+## Java
+
+- Static Analysis
+  - Alexandru Dura (LTH)
+  - tbd
+
+- Dynamic Analysis
+  - Noric Couderc (LTH)
