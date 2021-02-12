@@ -52,3 +52,12 @@ doxygen:
     bison
   path: doxygen
 
+cassandra:
+  deps:
+  needs:
+    python2.7
+    openjdk-8-jdk
+    maven
+    ant
+  path: cassandra
+
