@@ -1,3 +1,5 @@
+# Corpus:
+
 actor_framework:
   deps:
   needs:
@@ -32,16 +34,6 @@ titan_core:
   path:
     titan.core
 
-llvm:
-  deps:
-  needs:
-    g++
-    cmake
-    python3
-    ninja-build
-  path:
-    llvm
-
 doxygen:
   deps:
   needs:
@@ -56,8 +48,28 @@ cassandra:
   deps:
   needs:
     python2.7
-    openjdk-8-jdk
+    openjdk-11-jdk
     maven
     ant
   path: cassandra
+
+
+# Tools:
+
+llvm:
+  deps:
+  needs:
+    g++
+    cmake
+    python3
+    ninja-build
+  path:
+    llvm
+
+spotbugs:
+  deps:
+  needs:
+    openjdk-11-jdk
+  path:
+    spotbugs
 
