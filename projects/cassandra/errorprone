@@ -1,0 +1,8 @@
+rm -rf errorprone-build
+cp -r . errorprone-build
+cd errorprone-build
+ant clean
+
+reportDir=$OVE_BASE_DIR/reports
+mkdir -p $reportDir
+ant errorprone -Duse.jdk11=true | tee /dev/stderr | $OVE_PROJECT_DIR/sarif-converters/errorprone.py > $reportDir/errorprone-cassandra.sarif

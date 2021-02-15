@@ -1,8 +1,20 @@
+diff --git a/.gitignore b/.gitignore
+index d03cf420b2..d684534de8 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -80,3 +80,7 @@ doc/source/tools/nodetool
+ 
+ # Python virtual environment
+ venv/
++
++# ErrorProne workspace
++errorprone-build
++
 diff --git a/build.xml b/build.xml
-index c39701978e..7ada56d2b3 100644
+index c39701978e..e0fd040f10 100644
 --- a/build.xml
 +++ b/build.xml
-@@ -2457,4 +2457,20 @@
+@@ -2457,4 +2457,79 @@
  
    </target>
  
@@ -20,6 +32,65 @@ index c39701978e..7ada56d2b3 100644
 +      <class location="${basedir}/build/apache-cassandra-4.0-beta5-SNAPSHOT.jar" />
 +      <sourcePath path="${basedir}/src/java" />
 +    </spotbugs>
++  </target>
++
++  <!--
++      A copy of the build target with ErrorProne hooked in
++  -->
++  <target name="errorprone"
++      depends="maven-ant-tasks-retrieve-build,errorprone-project" description="Compile Cassandra classes"/>
++
++  <target depends="init,gen-cql3-grammar,generate-cql-html,generate-jflex-java,rat-report"
++          name="errorprone-project">
++      <echo message="${ant.project.name}: ${ant.file}"/>
++      <!-- Order matters! -->
++      <antcall target="_errorprone_java"/>
++      <antcall target="createVersionPropFile"/>
++      <copy todir="${build.classes.main}">
++          <fileset dir="${build.src.resources}" />
++      </copy>
++      <copy todir="${basedir}/conf" file="${build.classes.main}/META-INF/hotspot_compiler"/>
++  </target>
++
++  <target name="_errorprone_java">
++      <!-- Note: we cannot use javac's 'release' option, as that does not allow accessing sun.misc.Unsafe nor
++      Nashorn's ClassFilter class as any javac modules option is invalid for relase 8. -->
++      <echo message="Compiling for Java ${target.version}..."/>
++
++      <property name="javac.jar" location="${user.home}/.m2/repository/com/google/errorprone/javac/9+181-r4173-1/javac-9+181-r4173-1.jar"/>
++
++      <!-- using github.com/google/error-prone-javac is required when running on JDK 8 -->
++      <condition property="jdk9orlater">
++        <javaversion atleast="9"/>
++      </condition>
++
++      <path id="processorpath.ref">
++        <pathelement location="/ove/errorprone/core/target/error_prone_core-HEAD-SNAPSHOT-with-dependencies.jar"/>
++        <pathelement location="${user.home}/.m2/repository/com/google/code/findbugs/jFormatString/3.0.0/jFormatString-3.0.0.jar"/>
++        <pathelement location="${user.home}/.m2/repository/org/checkerframework/dataflow-shaded/3.7.1/dataflow-shaded-3.7.1.jar"/>
++        <!-- Add annotation processors and Error Prone custom checks here if needed -->
++      </path>
++
++      <javac fork="true"
++              debug="true" debuglevel="${debuglevel}" encoding="utf-8"
++              destdir="${build.classes.main}" includeantruntime="false" source="${source.version}" target="${target.version}"
++              memorymaximumsize="512M">
++          <src path="${build.src.java}"/>
++          <src path="${build.src.gen-java}"/>
++
++          <!-- ErrorProne -->
++          <compilerarg value="-J-Xbootclasspath/p:${javac.jar}" unless:set="jdk9orlater"/>
++          <compilerarg value="-XDcompilePolicy=simple"/>
++          <compilerarg value="-processorpath"/>
++          <compilerarg pathref="processorpath.ref"/>
++          <compilerarg value="-Xplugin:ErrorProne -Xep:DeadException:ERROR" />
++
++          <compilerarg value="-XDignore.symbol.file"/>
++          <compilerarg line="${jdk11-javac-exports}"/>
++          <classpath>
++              <path refid="cassandra.classpath"/>
++          </classpath>
++      </javac>
 +  </target>
 +
  </project>
