@@ -73,3 +73,11 @@ spotbugs:
   path:
     spotbugs
 
+errorprone:
+  deps:
+  needs:
+    maven
+  path:
+    errorprone
+
+
