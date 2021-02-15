@@ -1,21 +1,21 @@
 diff --git a/build.xml b/build.xml
-index c39701978e..5704e115c5 100644
+index c39701978e..7ada56d2b3 100644
 --- a/build.xml
 +++ b/build.xml
 @@ -2457,4 +2457,20 @@
  
    </target>
  
++  <property name="spotbugs.home" value="/ove/spotbugs/spotbugs/build/install/spotbugs" />
++
 +  <taskdef
 +    resource="edu/umd/cs/findbugs/anttask/tasks.properties"
-+    classpath="/usr/share/ant/lib/spotbugs-ant.jar" />
-+
-+  <property name="spotbugs.home" value="/ove/spotbugs/spotbugs/build/install/spotbugs" />
++    classpath="${spotbugs.home}/lib/spotbugs-ant.jar" />
 +
 +  <target name="spotbugs" depends="jar">
 +    <spotbugs home="${spotbugs.home}"
-+        output="xml"
-+        outputFile="cassandra-sb.xml" >
++        output="sarif"
++        outputFile="cassandra-sb.sarif" >
 +      <!--<auxClasspath path="${basedir}/lib/Regex.jar" />-->
 +      <class location="${basedir}/build/apache-cassandra-4.0-beta5-SNAPSHOT.jar" />
 +      <sourcePath path="${basedir}/src/java" />
