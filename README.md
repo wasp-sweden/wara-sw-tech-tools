@@ -21,6 +21,7 @@ WASP [Research Arena for Software
 - Most packages require compilers or run-time systems; OVE (see below) will report system dependencies as needed.
 
 This repository uses [OVE](https://github.com/Ericsson/ove).
+For more information, read the [OVE Tutorial](https://github.com/Ericsson/ove-tutorial).
 
 # Installing and running
 To set up the workspace run the oneliner:
@@ -28,11 +29,13 @@ To set up the workspace run the oneliner:
 
 This will create an OVE workspace directory with the name WARA-SW. Follow the setup script by entering the workspace directory and running `source ove`. You can now clone the repositories of the software corpus by running `ove fetch`.
 
-If you have Docker installed, you can launch a pristine Ubuntu environment for building and testing the corpus projects using `ove docker`. Running `ove buildme` in this container will prompt you to install missing dependencies using `sudo apt install`.
+If you have Docker installed, you can launch a pristine Ubuntu environment for building and testing the corpus projects using `ove docker`. Running `ove list-needs` in this container will list OS dependencies you will need to install using `sudo apt install` (or equivalently).
 
-Once the corpus is built, `ove systest doxygen-clang-tidy` can be used to run an example invocation of clang-tidy on Doxygen.
+The corpus can then be used as follows:
 
-For more information, read the [OVE Tutorial](https://github.com/Ericsson/ove-tutorial).
+1. Run `ove patch` to apply changes needed by the corpus.
+2. Run `ove buildme` to compile the entire corpus, or specify a subset of the projects to build (e.g. `ove buildme spotbugs cassandra`).
+3. Tools can now be invoked using `ove <tool> [projects...]`, e.g. `ove spotbugs cassandra` to run SpotBugs on Cassandra.
 
 # Backlog
 See the [Backlog](https://github.com/wasp-sweden/wara-sw-tech-tools/blob/main/README.md) file for details.
