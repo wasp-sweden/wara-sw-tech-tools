@@ -1,0 +1,2 @@
+git apply $OVE_PROJECT_DIR/patches/cassandra.patch
+

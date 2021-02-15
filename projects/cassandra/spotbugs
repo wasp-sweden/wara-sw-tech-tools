@@ -1,0 +1,1 @@
+ant spotbugs -Duse.jdk11=true
