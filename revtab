@@ -13,5 +13,6 @@ spotbugs	https://github.com/spotbugs/spotbugs	https://github.com/spotbugs/spotbu
 errorprone https://github.com/google/error-prone https://github.com/google/error-prone 0b546dec3a6bcb9b3f035fda45fbc1ab1b30660c
 
 # SmartModules
+hyperfine https://github.com/sharkdp/hyperfine https://github.com/sharkdp/hyperfine 49fcc4b
 sm-java git@git.cs.lth.se:creichen/sm-java git@git.cs.lth.se:creichen/sm-java 6840051cea1a3ad944925fb7c400c9575d8a18f1
 papi-java https://github.com/creichen/papi-java https://github.com/creichen/papi-java 73a5d74ff7fe22736c9876e178c115d69b0097c8

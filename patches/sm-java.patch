@@ -1,0 +1,37 @@
+diff --git a/Makefile b/Makefile
+index c09f806..6227881 100644
+--- a/Makefile
++++ b/Makefile
+@@ -25,7 +25,7 @@ sm-test:
+ 
+ frontend: ${FRONTEND_JAR}
+ 
+-substitution: container-sub/generify.sh container-sub/universalise.sh
++substitution: container-sub/generify-universalise.sh
+ 	cd container-sub ; ./generate.py && make
+ 
+ substitution-test:
+diff --git a/libsm/build.xml b/libsm/build.xml
+index 25c72c4..3a06ba8 100644
+--- a/libsm/build.xml
++++ b/libsm/build.xml
+@@ -7,8 +7,9 @@
+   <property name="lib-instrumenter" value="${lib}/size-instrumenter.jar"/>
+   <property name="lib-sm" value="${lib}/sm.jar"/>
+   <property name="lib-sm-base" value="${lib}/sm-base.jar"/>
+-  <!-- The path to the junit lib -->
+-  <property name="lib-junit4" value="/usr/share/java/junit4.jar"/>
++  <!-- The path to the junit lib (WARA-SW: piggybacking on regression-tests submodule) -->
++  <property name="lib-junit4" value="../frontend/regression-tests/lib/junit-4.11.jar"/>
++  <property name="lib-hamcrest-core" value="../frontend/regression-tests/lib/hamcrest-core-1.3.jar"/>
+ 
+   <target name="build-all" depends="build-size-instrumenter,build-sm">
+   </target>
+@@ -124,6 +125,7 @@
+     <junit failureproperty="test.failed">
+       <classpath>
+ 	<pathelement location="${lib-junit4}"/>
++	<pathelement location="${lib-hamcrest-core}"/>
+ 	<pathelement location="asm-7.0.jar"/>
+ 	<pathelement location="${lib-sm}"/>
+       </classpath>

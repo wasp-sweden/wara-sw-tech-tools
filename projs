@@ -89,15 +89,24 @@ papi_java:
     make
     gcc
     libpapi-dev
-    openjdk-11-jdk
+    openjdk-8-jdk
   path:
     papi-java
+
+hyperfine:
+  deps:
+  needs:
+    rustc
+  path:
+    hyperfine
 
 sm_java: # Can't have dashes in names
   deps:
     papi_java
+    hyperfine
   needs:
     ant
-    openjdk-11-jdk
+    openjdk-8-jdk
+    python2.7
   path:
     sm-java
