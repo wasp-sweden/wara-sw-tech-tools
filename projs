@@ -81,3 +81,21 @@ errorprone:
     errorprone
 
 
+# SmartModules
+
+papi_java:
+  deps:
+  needs:
+    libpapi-dev
+    openjdk-11-jdk
+  path:
+    papi-java
+
+sm_java: # Can't have dashes in names
+  deps:
+    papi_java
+  needs:
+    ant
+    openjdk-11-jdk
+  path:
+    sm-java
