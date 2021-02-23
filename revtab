@@ -10,5 +10,4 @@ cassandra https://gitbox.apache.org/repos/asf/cassandra.git https://gitbox.apach
 # tools
 llvm    https://github.com/llvm/llvm-project    https://github.com/llvm/llvm-project 119545f4338efacabf99e06eeca965913f6617f2
 spotbugs	https://github.com/spotbugs/spotbugs	https://github.com/spotbugs/spotbugs	f579c4b4f63dbbf8023385fab13ec84923519999
-errorprone https://github.com/google/error-prone https://github.com/google/error-prone master
-
+errorprone https://github.com/google/error-prone https://github.com/google/error-prone 0b546dec3a6bcb9b3f035fda45fbc1ab1b30660c
