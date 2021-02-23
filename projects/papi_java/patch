@@ -1,0 +1,1 @@
+git apply $OVE_PROJECT_DIR/patches/papi-java.patch

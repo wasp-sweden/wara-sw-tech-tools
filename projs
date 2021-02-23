@@ -86,6 +86,8 @@ errorprone:
 papi_java:
   deps:
   needs:
+    make
+    gcc
     libpapi-dev
     openjdk-11-jdk
   path:

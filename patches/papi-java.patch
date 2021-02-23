@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index 753557a..915ba03 100644
+--- a/Makefile
++++ b/Makefile
+@@ -76,7 +76,7 @@ src/papi/Constants.java: jni/genconst.bin
+ 	./jni/genconst.bin >$@
+ 
+ jni/$(WRAPPER_CLASS_C_HEADER): src/$(WRAPPER_CLASS_JAVA_FILE)
+-	$(JAVAH) -cp src/ -d jni/ $(WRAPPER_CLASS)
++	$(JAVAC) -h jni/ src/$(WRAPPER_CLASS_JAVA_FILE)
+ 
+ jni/*.c: jni/$(WRAPPER_CLASS_C_HEADER)
+ 
