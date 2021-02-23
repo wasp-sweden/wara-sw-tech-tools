@@ -1,6 +1,7 @@
 FROM ubuntu
 ARG UID=1000
 ARG GID=1000
+ENV LANG C.UTF-8
 RUN apt update
 RUN apt install -y sudo bsdmainutils file git less tree binutils
 RUN groupadd -g $GID ove
