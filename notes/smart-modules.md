@@ -33,6 +33,8 @@ do `#include` in the `projs` file would improve that.
 
 ## Potential issues
 
+* CoCo submodule refers to a commit that doesn't exist (!?).
+
 * `featureextractor` fails a test with
   ```
   + diff test/temp/CoCoList.csv test/outputs/CoCoList.csv
