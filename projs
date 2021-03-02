@@ -109,4 +109,40 @@ sm_java: # Can't have dashes in names
     openjdk-8-jdk
     python2.7
   path:
-    sm-java
+    smartmodules-experimentalsetup/sm-java
+
+smartmodules_experimentalsetup:
+  deps:
+    sm_java
+    smartmodules_coco
+    smartmodules_featureextractor
+    smartmodules_collectionSwitch
+  needs:
+    papi-tools
+  path:
+    smartmodules-experimentalsetup
+
+smartmodules_featureextractor:
+  deps:
+  needs:
+    openjdk-8-jdk
+    aspectj
+  path:
+    smartmodules-experimentalsetup/featureextractor
+
+smartmodules_collectionSwitch:
+  deps:
+  needs:
+    openjdk-8-jdk
+    maven
+  path:
+    smartmodules-experimentalsetup/collectionSwitch
+
+smartmodules_coco:
+  deps:
+  needs:
+    ant
+    openjdk-8-jdk
+  path:
+    smartmodules-experimentalsetup/coco
+  

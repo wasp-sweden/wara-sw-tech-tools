@@ -1,8 +1,11 @@
 # Backlog
 
 ## SmartModules
-- [ ] Import all repositories, set up the directory structure.
-- [ ] Build and run tests for the tools (pretty straightforward except for sm-java / libsm / container-sub).
+- [AN] Import all repositories, set up the directory structure.
++ [AN] Build and run tests for the tools (pretty straightforward except for sm-java / libsm / container-sub).
+  + sm-java
+  + coco
+  + collectionSwitch
 - [ ] Run the generated variants that are available once.
 - [ ] Make script that can re-build variant that are indicated to work in the Status.org file in the repo (the ones that don't work are tagged as :error:. You can use the existing snippets in the file, but the result might be very copy-pasty.
 - [ ] Use the existing code to generate experimental data and plots.
