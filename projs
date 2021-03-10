@@ -117,8 +117,11 @@ smartmodules_experimentalsetup:
     smartmodules_coco
     smartmodules_featureextractor
     smartmodules_collectionSwitch
+    jbrainy
   needs:
     papi-tools
+    python3-pandas
+    python3-seaborn
   path:
     smartmodules-experimentalsetup
 
@@ -146,3 +149,11 @@ smartmodules_coco:
   path:
     smartmodules-experimentalsetup/coco
   
+jbrainy:
+  deps:
+    papi_java
+  needs:
+    openjdk-8-jdk
+    gradle
+  path:
+    jbrainy

@@ -4,6 +4,7 @@ cassandra                                        https://gitbox.apache.org/repos
 doxygen                                          https://github.com/doxygen/doxygen                  https://github.com/doxygen/doxygen                  63d7b19df11eb55a30e4af8fa492ee464ff353f5
 errorprone                                       https://github.com/google/error-prone               https://github.com/google/error-prone               0b546dec3a6bcb9b3f035fda45fbc1ab1b30660c
 hyperfine                                        https://github.com/sharkdp/hyperfine                https://github.com/sharkdp/hyperfine                49fcc4b
+jbrainy                                          git@git.cs.lth.se:noricc/jbrainy                    git@git.cs.lth.se:noricc/jbrainy                    master
 llvm                                             https://github.com/llvm/llvm-project                https://github.com/llvm/llvm-project                119545f4338efacabf99e06eeca965913f6617f2
 papi-java                                        https://github.com/creichen/papi-java               https://github.com/creichen/papi-java               73a5d74ff7fe22736c9876e178c115d69b0097c8
 redis                                            https://github.com/redis/redis                      https://github.com/redis/redis                      b5f3996250eac3adbda407086fc519aebcb29797
@@ -11,6 +12,7 @@ smartmodules-experimentalsetup                   git@git.cs.lth.se:noricc/experi
 smartmodules-experimentalsetup/coco              git@git.cs.lth.se:creichen/coco.git                 git@git.cs.lth.se:creichen/coco.git                 0f55ff8983ed2ea786b9b5f03537a0c028a9cfb0
 smartmodules-experimentalsetup/collectionSwitch  https://github.com/Noricc/collectionSwitch.git      https://github.com/Noricc/collectionSwitch.git      fe0ff5c359e226223bac64656b834e7e392005e3
 smartmodules-experimentalsetup/featureextractor  git@git.cs.lth.se:noricc/featureextractor.git       git@git.cs.lth.se:noricc/featureextractor.git       0df9966b78fef811298d51ddb61c50cced5fd4f9
-smartmodules-experimentalsetup/sm-java           git@git.cs.lth.se:creichen/sm-java.git              git@git.cs.lth.se:creichen/sm-java.git              6840051cea1a3ad944925fb7c400c9575d8a18f1
+smartmodules-experimentalsetup/sm-java           git@git.cs.lth.se:creichen/sm-java.git              git@git.cs.lth.se:creichen/sm-java.git              6840051
+# 347a47542fac1f1e2da67efdfc7670f8f594fc17
 spotbugs                                         https://github.com/spotbugs/spotbugs                https://github.com/spotbugs/spotbugs                f579c4b4f63dbbf8023385fab13ec84923519999
 titan.core                                       https://github.com/eclipse/titan.core               https://github.com/eclipse/titan.core               6f8e4b44f21a5e99ca8880f4fcdc59d12a302f95
