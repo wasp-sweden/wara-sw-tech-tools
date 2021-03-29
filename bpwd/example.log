@@ -1,0 +1,24 @@
+deox@june:/data/deox/lu/wasp/WARA-SW/wara-sw-tech-tools$ bpwd/bpwd.py bpwd/dummy-benchmark.sh 
+there is an issue; run anyway?
+y/N: y
+[bpwd] executing ['bpwd/dummy-benchmark.sh']
+[bpwd] child 420059 running
+[benchmark] 420059 running...
+[benchmark] 4500...
+[benchmark] 4000...
+[bpwd] warning: process 6502 (gnome-shell) exceeded CPU% warning threshold of 10.0: 12.4 %
+[bpwd] warning: process 7270 (chrome) exceeded CPU% warning threshold of 10.0: 15.2 %
+[bpwd] warning: process 18275 (chrome) exceeded CPU% warning threshold of 10.0: 31.4 %
+[bpwd] warning: process 100607 (code) exceeded CPU% warning threshold of 10.0: 30.5 %
+[bpwd] warning: process 100637 (code) exceeded CPU% warning threshold of 10.0: 45.7 %
+[bpwd] warning: process 420059 (dummy-benchmark) exceeded CPU% warning threshold of 10.0: 20.0 %
+[benchmark] 3500...
+[benchmark] 3000...
+[bpwd] warning: process 7270 (chrome) exceeded CPU% warning threshold of 10.0: 14.2 %
+[bpwd] warning: process 18275 (chrome) exceeded CPU% warning threshold of 10.0: 31.3 %
+[bpwd] warning: process 420059 (dummy-benchmark) exceeded CPU% warning threshold of 10.0: 23.7 %
+[benchmark] 2500...
+[bpwd] warning: process 7270 (chrome) exceeded CPU% warning threshold of 10.0: 14.2 %
+[bpwd] warning: process 13149 (gnome-terminal-server) exceeded CPU% termination threshold of 50.0: 55.7 %
+[bpwd] watchdog raised alarm
+[bpwd] watchdog: background process tainted results
