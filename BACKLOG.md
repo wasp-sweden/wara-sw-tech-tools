@@ -19,10 +19,10 @@
   - [N] B2 no heavy BG processes running
   - [ ] B3 no GUI running
   - [ ] B4 CPU frequency governor set to fixed frequency or turboboost disabled
-  - [ ] B5 hyperthreading disabled
+  + [N] B5 hyperthreading disabled
 - [ ] Update Dynamic Best practices tool: auto-fix [B1] if possible
 - [ ] Update Dynamic Best practices tool: auto-fix [B4] if possible (max frequency)
-- [ ] Update Dynamic Best practices tool: auto-fix [B5] if possible
++ [N] Update Dynamic Best practices tool: auto-fix [B5] if possible
 - [ ] Command-line tool "for dummies" who want to run OVE on the ERDC:
   - Script to check/install cloud access setup on client (ask for everything)
   - Spin up ERDC image, run benchmark or test on ERDC, transfer results, shut down image
