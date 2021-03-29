@@ -218,33 +218,41 @@ def prepare_command(args):
     return command
 
 async def main():
-    args = parse_args()
-    if not validate_args(args):
-        sys.exit(1)
+    try:
+        args = parse_args()
+        if not validate_args(args):
+            sys.exit(1)
 
-    greenlit, issues = perform_sanity_checks(args)
-    if not greenlit:
-        sys.exit(1)
+        greenlit, issues = perform_sanity_checks(args)
+        if not greenlit:
+            sys.exit(1)
 
-    command = prepare_command(args)
-    log("executing " + str(command))
-    child = await asyncio.create_subprocess_exec(*command)
-    log(f"child {child.pid} running")
+        command = prepare_command(args)
+        log("executing " + str(command))
+        child = await asyncio.create_subprocess_exec(*command)
+        log(f"child {child.pid} running")
 
-    child_task = asyncio.create_task(child.wait())
-    watch_task = asyncio.create_task(watch_processes(child, args))
+        child_task = asyncio.create_task(child.wait())
+        watch_task = asyncio.create_task(watch_processes(child, args))
 
-    done, pending = await asyncio.wait({child_task, watch_task}, return_when=asyncio.FIRST_COMPLETED)
-    if watch_task in done:
-        log("watchdog raised alarm")
-        await kill_child(child_task, child)
-        log("watchdog: " + watch_task.result())
-    elif child_task in done:
-        log("child completed; stopping watchdog")
-        await stop_watchdog(watch_task)
+        done, pending = await asyncio.wait({child_task, watch_task}, return_when=asyncio.FIRST_COMPLETED)
+        if watch_task in done:
+            log("watchdog raised alarm")
+            await kill_child(child_task, child)
+            log("watchdog: " + watch_task.result())
+        elif child_task in done:
+            log("child completed; stopping watchdog")
+            await stop_watchdog(watch_task)
 
-    # Restore state modified by automatic fixing
-    for issue in issues:
-        issue.unfix()
+    except asyncio.CancelledError:
+        log("interrupted")
 
-asyncio.run(main())
+    finally:
+        # Restore state modified by automatic fixing
+        for issue in issues:
+            issue.unfix()
+
+try:
+    asyncio.run(main())
+except KeyboardInterrupt:
+    log("interrupted by user")
