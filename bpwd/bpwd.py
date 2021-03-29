@@ -52,14 +52,18 @@ async def stop_watchdog(task):
 # At-start sanity checks: 
 
 class Issue:
-    def __init__(self, name, description, args):
+    def __init__(self, name, description_issue, description_resolved, args):
         self.name = name
-        self.description = description
+        self._description_issue = description_issue
+        self._description_resolved = description_resolved
         self._args = args
         self._ok = False
 
     def __str__(self):
-        return f"{self.name}: {self.description}"
+        return f"{self.name}: {self.description()}"
+
+    def description(self):
+        return self._description_resolved if self.is_resolved() else self._description_issue
 
     def check(self):
         pass
@@ -82,7 +86,7 @@ class Issue:
 class SMTIssue(Issue):
     def __init__(self, args):
         self._smt_changed = False
-        super().__init__("SMT", "hyperthreading is enabled", args)
+        super().__init__("SMT", "hyperthreading is enabled", "hyperthreading is disabled", args)
 
     def check(self):
         with open("/sys/devices/system/cpu/smt/active", "r") as f:
@@ -121,10 +125,10 @@ def smt_check(args):
 def devil_check(args):
     return Issue("devil", "just here to be annoying")
 
-def log_issues(issues, display_autofix = False):
+def log_issues(issues, display_autofix = False, show_all = False):
     for issue in issues:
-        if not issue.is_resolved():
-            log(f" - [{'OK' if issue.is_resolved() else '!!'}] {issue} {'(auto-fix available)' if display_autofix and issue.can_fix() else ''}")
+        if show_all or not issue.is_resolved():
+            log(f" - [{'OK' if issue.is_resolved() else '!!'}] {issue} {'(auto-fix available)' if display_autofix and not issue.is_resolved() and issue.can_fix() else ''}")
 
 def count_unresolved(issues):
     return len([issue for issue in issues if not issue.is_resolved()])
@@ -139,10 +143,10 @@ def perform_sanity_checks(args):
 
     greenlit = True
 
-    if count_unresolved(issues) != 0:
-        log(f"detected {count_unresolved(issues)} issues:")
-        log_issues(issues, display_autofix=True)
+    log(f"detected {count_unresolved(issues)} issues:")
+    log_issues(issues, display_autofix=True, show_all=True)
 
+    if count_unresolved(issues) != 0:
         if args.autofix:
             log(f"attempting to automatically fix issues...")
             for issue in issues:
@@ -152,7 +156,7 @@ def perform_sanity_checks(args):
                 log("all issues fixed")
             else:
                 log(f"{count_unresolved(issues)} issues remain:")
-                log_issues(issues)
+                log_issues(issues, show_all=True)
 
         if count_unresolved(issues) != 0:
             if args.override:
@@ -163,14 +167,14 @@ def perform_sanity_checks(args):
 
     return greenlit, issues
 
-
 def parse_args():
     # General
     parser = argparse.ArgumentParser(
         description="Assistance for running a benchmark in accordance with best practices.",
         formatter_class=lambda prog: argparse.HelpFormatter(prog, max_help_position=32))
     parser.add_argument("-f", "--override", action="store_true", help="run regardless of detected issues")
-    parser.add_argument("-a", "--autofix", action="store_true", help="try to automatically fix detected issues")
+    parser.add_argument("-a", "--autofix", action="store_true", help="try to automatically fix detected issues (requires root)")
+    parser.add_argument("-u", dest="uid", type=int, help="run as this UID (requires root)")
 
     # CPU percentage watcher
     parser.add_argument("--cpu-interval", type=float, help="interval for measuring CPU percentage", default=DEFAULT_WATCHDOG_INTERVAL)
@@ -182,15 +186,49 @@ def parse_args():
 
     return parser.parse_args()
 
+
+def validate_args(args):
+    if os.getuid() != 0:
+        if args.autofix:
+            log("option -a/--autofix requires root privileges")
+            return False
+
+        if args.uid is not None:
+            log("option -u requires root privileges")
+            return False
+
+    return True
+
+
+def prepare_command(args):
+    command = args.command
+
+    if "SUDO_UID" in os.environ or args.uid is not None:
+        uid = 0
+        if args.uid is None:
+            uid = os.environ['SUDO_UID']
+            log(f"running with sudo; dropping back to calling user ({uid}); specify -u to change this behaviour")
+        else:
+            log(f"running as user {uid}")
+            uid = args.uid
+
+        # Is this a safe way of doing this or is there any risk of injection?
+        command = ["sudo", "-u", f"#{uid}", "--"] + command
+    
+    return command
+
 async def main():
     args = parse_args()
+    if not validate_args(args):
+        sys.exit(1)
 
     greenlit, issues = perform_sanity_checks(args)
     if not greenlit:
         sys.exit(1)
 
-    log("executing " + str(args.command))
-    child = await asyncio.create_subprocess_exec(*args.command)
+    command = prepare_command(args)
+    log("executing " + str(command))
+    child = await asyncio.create_subprocess_exec(*command)
     log(f"child {child.pid} running")
 
     child_task = asyncio.create_task(child.wait())
