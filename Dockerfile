@@ -15,8 +15,11 @@ RUN mkdir /ove
 RUN chown ove:ove /ove
 RUN echo '%sudo ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 USER $UID:$GID
-COPY ove.bash /home/ove/.ove.bash
+COPY --chown=ove:ove docker/ove.bash /home/ove/.ove.bash
+COPY --chown=ove:ove docker/ove /ove/.ove
 RUN echo '[ -f ~/.ove.bash ] && source ~/.ove.bash' >> /home/ove/.bashrc
 WORKDIR /ove
+COPY --chown=ove:ove . /ove/wara-sw-tech-tools
+RUN ln -s .ove/ove ove
+RUN ln -s wara-sw-tech-tools .owel
 ENTRYPOINT /bin/bash
-

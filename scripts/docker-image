@@ -1,0 +1,15 @@
+#!/bin/bash
+
+project=$1
+shift
+
+if [ "$project" == "base" ] || [ "$project" == "" ]; then
+    # Build base
+    echo "Building base Docker..."
+    cp "$OVE_BASE_DIR/.ove/ove.bash" "$OVE_PROJECT_DIR/docker/"
+    cp -r "$OVE_BASE_DIR/.ove" "$OVE_PROJECT_DIR/docker/ove"
+    docker build -t wara-sw-ove $@ $OVE_PROJECT_DIR || exit 1
+else
+    echo "Building Docker image for $project..."
+    docker build -t wara-sw-ove:$project $@ $OVE_PROJECT_DIR/docker/$project || exit 1
+fi
