@@ -218,11 +218,11 @@ def prepare_command(args):
     return command
 
 async def main():
-    try:
-        args = parse_args()
-        if not validate_args(args):
-            sys.exit(1)
+    args = parse_args()
+    if not validate_args(args):
+        sys.exit(1)
 
+    try:
         greenlit, issues = perform_sanity_checks(args)
         if not greenlit:
             sys.exit(1)
