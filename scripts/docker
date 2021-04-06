@@ -17,9 +17,8 @@ cd "$OVE_BASE_DIR"
 if [ $CLEAN == 1 ]; then
 		echo "Starting clean environment..."
 		docker rm -f "$NAME" 2> /dev/null
-		cp "$OVE_BASE_DIR/.ove/ove.bash" "$OVE_PROJECT_DIR/docker/"
-		docker build --no-cache --build-arg UID --build-arg GID -t ove "$OVE_PROJECT_DIR/docker" || exit 1
-		docker run -ti --name="$NAME" -v="$PWD:/ove" ove
+		$OVE_PROJECT_DIR/scripts/docker-image base --no-cache --build-arg UID --build-arg GID || exit 1
+		docker run -ti --name="$NAME" -v="$PWD:/ove" wara-sw-ove
 else
 		echo "Reattaching..."
 		docker start -ai "$NAME"

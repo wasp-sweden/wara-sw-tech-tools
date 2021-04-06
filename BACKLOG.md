@@ -27,7 +27,13 @@
   - Script to check/install cloud access setup on client (ask for everything)
   - Spin up ERDC image, run benchmark or test on ERDC, transfer results, shut down image
 
-## Milestone 2: demonstrator demonstrator
+## Miscellaneous
+- [AN] Pre-built Docker image
+
+## Milestone 2: Java Support
+- [CR] Driver projects present their status, determine next steps
+
+## Milestone Y: demonstrator demonstrator
 + [N] formulate our requirements for the output format
   - mandatory:
     - source location
@@ -52,21 +58,24 @@
 - [] generate html or pdf output for visualising tool output for public consumption
 - [] package + description: how to build a demonstrator for your tool (consider container image?)
 - [] c/c++ cache (ccache etc)
-- **Milestone 2** completed: demonstrator demonstrator up and running
+- **Milestone Y** completed: demonstrator demonstrator up and running
 
-## Milestone 3: scale to breadth and fix all bugs that are in the way (more C/C++ corpus projects and tools)
-- prestudy for dynamic tools in Milestone 4
+
+## Milestone Z: scale to breadth and fix all bugs that are in the way (more C/C++ corpus projects and tools)
+- prestudy for dynamic tools in next Milestone
 
 
 # Completed
 
 + **Milestone 1** completed: 1 tool running on one corpus code base
++ **Prep Milestone X** : initial discussions wrt tool output formats
 
-# Stakeholders
+# Research Project Drivers
 
 ## C/C++
 
-(no current stakeholders)
+- tbd
+  - Patrik Åberg
 
 ## Java
 
@@ -76,3 +85,4 @@
 
 - Dynamic Analysis
   - Noric Couderc (LTH)
+
