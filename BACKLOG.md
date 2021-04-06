@@ -1,8 +1,5 @@
 # Backlog
 
-## Milestone 2: Java Support
-- [CR] Driver projects present their status, determine next steps
-
 ## Tooling:
 - Benchmarking Best Practices tool
   - [ ] B1 scan that no cron jobs are scheduled anywhere
@@ -16,6 +13,12 @@
 - [ ] Command-line tool "for dummies" who want to run OVE on the ERDC:
   - Script to check/install cloud access setup on client (ask for everything)
   - Spin up ERDC image, run benchmark or test on ERDC, transfer results, shut down image
+
+## Miscellaneous
+- [AN] Pre-built Docker image
+
+## Milestone 2: Java Support
+- [CR] Driver projects present their status, determine next steps
 
 ## Milestone Y: demonstrator demonstrator
 - [] search for tools for comparing outputs of these tools and check for input formats
