@@ -2,6 +2,8 @@ FROM ubuntu
 ARG UID=1000
 ARG GID=1000
 ENV LANG C.UTF-8
+ENV TZ=Etc/GMT-1
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt-get update
 RUN apt-get install -y sudo bsdmainutils file git less tree binutils software-properties-common
 RUN add-apt-repository -y ppa:cwchien/gradle
