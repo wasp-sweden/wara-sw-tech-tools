@@ -18,7 +18,7 @@ if [ $CLEAN == 1 ]; then
 		echo "Starting clean environment..."
 		docker rm -f "$NAME" 2> /dev/null
 		$OVE_PROJECT_DIR/scripts/docker-image base --no-cache --build-arg UID --build-arg GID || exit 1
-		docker run -ti --name="$NAME" -v="$PWD:/ove" wara-sw-ove
+		docker run -ti --name="$NAME" -v="$PWD:/ove" warasw/tep:latest
 else
 		echo "Reattaching..."
 		docker start -ai "$NAME"
