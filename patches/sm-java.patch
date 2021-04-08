@@ -11,6 +11,16 @@ index c09f806..6227881 100644
  	cd container-sub ; ./generate.py && make
  
  substitution-test:
+diff --git a/container-sub/generate.py b/container-sub/generate.py
+index 393080f..297708c 100755
+--- a/container-sub/generate.py
++++ b/container-sub/generate.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ import os
+ 
 diff --git a/libsm/build.xml b/libsm/build.xml
 index 25c72c4..3a06ba8 100644
 --- a/libsm/build.xml

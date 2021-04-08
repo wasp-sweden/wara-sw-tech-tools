@@ -9,7 +9,7 @@ llvm                                             https://github.com/llvm/llvm-pr
 papi-java                                        https://github.com/creichen/papi-java               https://github.com/creichen/papi-java               73a5d74ff7fe22736c9876e178c115d69b0097c8
 redis                                            https://github.com/redis/redis                      https://github.com/redis/redis                      b5f3996250eac3adbda407086fc519aebcb29797
 smartmodules-experimentalsetup                   git@git.cs.lth.se:noricc/experimentalsetup          git@git.cs.lth.se:noricc/experimentalsetup          93681ee456fb0bd0ace323f988d0faa2ad93e36f
-smartmodules-experimentalsetup/coco              git@git.cs.lth.se:creichen/coco.git                 git@git.cs.lth.se:creichen/coco.git                 0f55ff8983ed2ea786b9b5f03537a0c028a9cfb0
+smartmodules-experimentalsetup/coco              git@git.cs.lth.se:creichen/coco.git                 git@git.cs.lth.se:creichen/coco.git                 18e2982c1ff424506aef690eb651b2786bac835c
 smartmodules-experimentalsetup/collectionSwitch  https://github.com/Noricc/collectionSwitch.git      https://github.com/Noricc/collectionSwitch.git      fe0ff5c359e226223bac64656b834e7e392005e3
 smartmodules-experimentalsetup/featureextractor  git@git.cs.lth.se:noricc/featureextractor.git       git@git.cs.lth.se:noricc/featureextractor.git       0df9966b78fef811298d51ddb61c50cced5fd4f9
 smartmodules-experimentalsetup/sm-java           git@git.cs.lth.se:creichen/sm-java.git              git@git.cs.lth.se:creichen/sm-java.git              6840051
