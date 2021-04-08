@@ -44,7 +44,7 @@ all required dependencies pre-installed and the relevant projects pre-built.
 
 For example, the SpotBugs on Cassandra example from above can be checked out by running:
 
-`docker -it deox/wara-sw-ove:spotbugs`
+`docker -it warasw/tep:spotbugs`
 
 Once downloaded, this will launch an OVE shell in the container. You can now immediately run
 
