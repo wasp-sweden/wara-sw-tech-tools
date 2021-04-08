@@ -1,0 +1,38 @@
+#!/usr/bin/env python3
+
+import os
+import sys
+
+# Since main.py is in the smartmodules repo and not in the projects/smartmodules directory...
+sys.path.append(os.getcwd())
+from main import build_jbrainy_dacapo_variant
+from identity import replace_classes_identity
+from utils import run_commands
+from dacapo import create_variant
+
+print("Building chart-naive")
+build_jbrainy_dacapo_variant("programs/dacapo-2006-10-MR2-noexit.jar",
+                             "chart",
+                             "naive-dacapo-2006-chart.jar",
+                             "BENCHMARK",
+                             benchmark_dir="org/jfree")
+
+print("Building chart-jbrainy")
+build_jbrainy_dacapo_variant("programs/dacapo-2006-10-MR2-noexit.jar",
+                             "chart",
+                             "jbrainy-dacapo-2006-chart.jar",
+                             "PAPI",
+                             benchmark_dir="org/jfree")
+
+print("Building chart-identity")
+create_variant("programs/dacapo-2006-10-MR2-noexit.jar",
+               replace_classes_identity,
+               "variants/identity-dacapo-chart.jar",
+               adapt_harness=replace_classes_identity,
+               benchmark_dir="org/jfree")
+
+
+print("Building chart-coco")
+main.build_coco_dacapo_variant("programs/dacapo-2006-10-MR2-noexit.jar",
+                "coco-dacapo-chart.jar",
+                benchmark_dir="org/jfree")
