@@ -1,14 +1,16 @@
 # Backlog
 
 ## SmartModules
-- [AN] Import all repositories, set up the directory structure.
++ [AN] Import all repositories, set up the directory structure.
 + [AN] Build and run tests for the tools (pretty straightforward except for sm-java / libsm / container-sub).
   + sm-java
   + coco
   + collectionSwitch
-- [ ] Run the generated variants that are available once.
-- [ ] Make script that can re-build variant that are indicated to work in the Status.org file in the repo (the ones that don't work are tagged as :error:. You can use the existing snippets in the file, but the result might be very copy-pasty.
-- [ ] Use the existing code to generate experimental data and plots.
++ [AN] Run the generated variants that are available once.
+  + ~~CoCo variants don't work~~ They do now!
+  - chart-jbrainy doesn't work
+- [AN] Make script that can re-build variant that are indicated to work in the Status.org file in the repo (the ones that don't work are tagged as :error:. You can use the existing snippets in the file, but the result might be very copy-pasty.
+- [AN] Use the existing code to generate experimental data and plots.
 - [ ] I already have some setup for tracking what machine the benchmarks were run on. Find in the code where it is. Suggest improvements
 - [ ] See if you can use different JVMs and JVM params.
 - [ ] Try out the setup on ERDC.
@@ -23,6 +25,7 @@
 - [ ] Update Dynamic Best practices tool: auto-fix [B1] if possible
 - [ ] Update Dynamic Best practices tool: auto-fix [B4] if possible (max frequency)
 + [N] Update Dynamic Best practices tool: auto-fix [B5] if possible
+  - Find solution for Docker environments
 - [ ] Command-line tool "for dummies" who want to run OVE on the ERDC:
   - Script to check/install cloud access setup on client (ask for everything)
   - Spin up ERDC image, run benchmark or test on ERDC, transfer results, shut down image
