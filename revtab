@@ -8,11 +8,11 @@ jbrainy                                          git@git.cs.lth.se:noricc/jbrain
 llvm                                             https://github.com/llvm/llvm-project                https://github.com/llvm/llvm-project                119545f4338efacabf99e06eeca965913f6617f2
 papi-java                                        https://github.com/creichen/papi-java               https://github.com/creichen/papi-java               73a5d74ff7fe22736c9876e178c115d69b0097c8
 redis                                            https://github.com/redis/redis                      https://github.com/redis/redis                      b5f3996250eac3adbda407086fc519aebcb29797
-smartmodules-experimentalsetup                   git@git.cs.lth.se:noricc/experimentalsetup          git@git.cs.lth.se:noricc/experimentalsetup          93681ee456fb0bd0ace323f988d0faa2ad93e36f
-smartmodules-experimentalsetup/coco              git@git.cs.lth.se:creichen/coco.git                 git@git.cs.lth.se:creichen/coco.git                 18e2982c1ff424506aef690eb651b2786bac835c
+smartmodules-experimentalsetup                   git@git.cs.lth.se:noricc/experimentalsetup          git@git.cs.lth.se:noricc/experimentalsetup          197ff5ef33adacb5ece8555175806884165414ca
+smartmodules-experimentalsetup/coco              git@git.cs.lth.se:creichen/coco.git                 git@git.cs.lth.se:creichen/coco.git                 5d1b6249e5b356e39afed83bc36ac5def15d86c7
 smartmodules-experimentalsetup/collectionSwitch  https://github.com/Noricc/collectionSwitch.git      https://github.com/Noricc/collectionSwitch.git      fe0ff5c359e226223bac64656b834e7e392005e3
 smartmodules-experimentalsetup/featureextractor  git@git.cs.lth.se:noricc/featureextractor.git       git@git.cs.lth.se:noricc/featureextractor.git       0df9966b78fef811298d51ddb61c50cced5fd4f9
-smartmodules-experimentalsetup/sm-java           git@git.cs.lth.se:creichen/sm-java.git              git@git.cs.lth.se:creichen/sm-java.git              6840051
+smartmodules-experimentalsetup/sm-java           git@git.cs.lth.se:creichen/sm-java.git              git@git.cs.lth.se:creichen/sm-java.git              45ddd4d8f8ad02f577e4b8c8dcc374b21811315e
 # 347a47542fac1f1e2da67efdfc7670f8f594fc17
 spotbugs                                         https://github.com/spotbugs/spotbugs                https://github.com/spotbugs/spotbugs                f579c4b4f63dbbf8023385fab13ec84923519999
 titan.core                                       https://github.com/eclipse/titan.core               https://github.com/eclipse/titan.core               6f8e4b44f21a5e99ca8880f4fcdc59d12a302f95
