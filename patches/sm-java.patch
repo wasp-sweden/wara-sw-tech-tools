@@ -1,3 +1,16 @@
+diff --git a/container-sub/Makefile.src b/container-sub/Makefile.src
+index da12a64..6b00934 100644
+--- a/container-sub/Makefile.src
++++ b/container-sub/Makefile.src
+@@ -30,7 +30,7 @@ smrt-minus-tracers.jar: smci.jar
+ 
+ smrt.jar: smrt-minus-tracers.jar tracers
+ 	cp smrt-minus-tracers.jar smrt.jar
+-	javac -cp ${CLASSPATH}:papi.jar `find se/lth/cs/smartmodules/tracer -name "*.java"`
++	javac -cp ${CLASSPATH}:papi.jar `find se/lth/cs/ -name "*.java"`
+ 	jar uf smrt.jar #ALL_TRACERS# se/lth/cs/smartmodules/tracer/*.class se/lth/cs/smartmodules/*.class
+ 
+ smrt-run.jar: se/lth/cs/smartmodules/main/*.java
 diff --git a/container-sub/generate.py b/container-sub/generate.py
 index ae3cb9e..5c3eb56 100755
 --- a/container-sub/generate.py
