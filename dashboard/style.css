@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+body {
+    background-color: #222222;
+    text-align: center;
+    color: white;
+    font-family: "Rajdhani";
+}
+
+h1, h2 {
+    font-weight: normal;
+}
+
+h1 {
+    font-size: 32pt;
+}
+
+main {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.dashboard-object {
+    min-width: 600px;
+    width: 45%;
+    display: inline-block;
+    border: 5px solid #222222;
+    background-color: #111111;
+    border-radius: 16px;
+    padding: 8px;
+    margin: 8px;
+}
+
+
