@@ -1,0 +1,11 @@
+#!/usr/bin/env python3
+
+from tep.dash import Dashboard, Image
+
+Dashboard()\
+    .add(Image("avrora-bench-result.png", "dacapo-avrora"))\
+    .add(Image("chart-bench-result.png", "dacapo-chart"))\
+    .add(Image("fop-bench-result.png", "dacapo-fop"))\
+    .add(Image("lusearch-bench-result.png", "dacapo-lusearch"))\
+    .add(Image("bloat-bench-result.png", "dacapo-bloat"))\
+    .build()
