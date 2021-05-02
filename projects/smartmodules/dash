@@ -1,11 +1,34 @@
 #!/usr/bin/env python3
 
-from tep.dash import Dashboard, Image
+from tep.dashboard import Dashboard, Image, Component, Graph
+import plotly.express as px
+from pathlib import Path
 
-Dashboard()\
-    .add(Image("avrora-bench-result.png", "dacapo-avrora"))\
-    .add(Image("chart-bench-result.png", "dacapo-chart"))\
-    .add(Image("fop-bench-result.png", "dacapo-fop"))\
-    .add(Image("lusearch-bench-result.png", "dacapo-lusearch"))\
-    .add(Image("bloat-bench-result.png", "dacapo-bloat"))\
-    .build()
+import sys
+import os
+import json
+sys.path.append(os.getcwd())
+import benchmarking
+
+def create_boxplot(filename):
+    with open(filename) as results_file:
+        print("Loading results from '{0}'...".format(filename))
+        results = json.load(results_file)
+        results_dataframe = benchmarking.make_benchmark_df(results)
+
+        order = ["vanilla", "identity", "naive", "jbrainy", "coco", "collectionswitch"]
+        return px.box(
+            data_frame = results_dataframe,
+            orientation="h",
+            x="running-time",
+            y="variant",
+            color="variant",
+            labels="variant",
+            category_orders={"variant": order},
+            title=f"benchmark = {results_dataframe['benchmark'][0]}")
+
+dashboard = Dashboard(title="SmartModules")
+for file in Path("benchmark-results").iterdir():
+    dashboard.add(Graph(create_boxplot(file), title=file.stem))\
+
+dashboard.build().serve()
