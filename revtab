@@ -6,7 +6,7 @@ errorprone                                       https://github.com/google/error
 hyperfine                                        https://github.com/sharkdp/hyperfine                https://github.com/sharkdp/hyperfine                49fcc4b
 jbrainy                                          git@git.cs.lth.se:noricc/jbrainy                    git@git.cs.lth.se:noricc/jbrainy                    c42d35d1962c3e3e81b786419499f64fb6830f61
 llvm                                             https://github.com/llvm/llvm-project                https://github.com/llvm/llvm-project                119545f4338efacabf99e06eeca965913f6617f2
-papi-java                                        https://github.com/creichen/papi-java               https://github.com/creichen/papi-java               73a5d74ff7fe22736c9876e178c115d69b0097c8
+papi-java                                        https://github.com/creichen/papi-java               https://github.com/creichen/papi-java               master
 redis                                            https://github.com/redis/redis                      https://github.com/redis/redis                      b5f3996250eac3adbda407086fc519aebcb29797
 smartmodules-experimentalsetup                   git@git.cs.lth.se:noricc/experimentalsetup          git@git.cs.lth.se:noricc/experimentalsetup          197ff5ef33adacb5ece8555175806884165414ca
 smartmodules-experimentalsetup/coco              git@git.cs.lth.se:creichen/coco.git                 git@git.cs.lth.se:creichen/coco.git                 5d1b6249e5b356e39afed83bc36ac5def15d86c7
