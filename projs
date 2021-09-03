@@ -81,3 +81,82 @@ errorprone:
     errorprone
 
 
+# SmartModules
+
+papi_java:
+  deps:
+  needs:
+    make
+    gcc
+    libpapi-dev
+    openjdk-8-jdk
+  path:
+    papi-java
+
+hyperfine:
+  deps:
+  needs:
+    rustc
+  path:
+    hyperfine
+
+sm_java: # Can't have dashes in names
+  deps:
+    papi_java
+    hyperfine
+  needs:
+    ant
+    openjdk-8-jdk
+    openjdk-8-jre-headless
+    python2.7
+  path:
+    smartmodules-experimentalsetup/sm-java
+
+smartmodules:
+  deps:
+    sm_java
+    smartmodules_coco
+    smartmodules_featureextractor
+    smartmodules_collectionSwitch
+    jbrainy
+  needs:
+    unzip
+    papi-tools
+    python3-pandas
+    python3-seaborn
+    python3-sklearn
+  path:
+    smartmodules-experimentalsetup
+
+smartmodules_featureextractor:
+  deps:
+  needs:
+    openjdk-8-jdk
+    aspectj
+  path:
+    smartmodules-experimentalsetup/featureextractor
+
+smartmodules_collectionSwitch:
+  deps:
+  needs:
+    openjdk-8-jdk
+    maven
+  path:
+    smartmodules-experimentalsetup/collectionSwitch
+
+smartmodules_coco:
+  deps:
+  needs:
+    ant
+    openjdk-8-jdk
+  path:
+    smartmodules-experimentalsetup/coco
+  
+jbrainy:
+  deps:
+    papi_java
+  needs:
+    openjdk-8-jdk
+    gradle
+  path:
+    jbrainy

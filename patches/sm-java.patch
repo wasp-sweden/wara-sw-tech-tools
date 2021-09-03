@@ -1,0 +1,46 @@
+diff --git a/container-sub/Makefile.src b/container-sub/Makefile.src
+index da12a64..6b00934 100644
+--- a/container-sub/Makefile.src
++++ b/container-sub/Makefile.src
+@@ -30,7 +30,7 @@ smrt-minus-tracers.jar: smci.jar
+ 
+ smrt.jar: smrt-minus-tracers.jar tracers
+ 	cp smrt-minus-tracers.jar smrt.jar
+-	javac -cp ${CLASSPATH}:papi.jar `find se/lth/cs/smartmodules/tracer -name "*.java"`
++	javac -cp ${CLASSPATH}:papi.jar `find se/lth/cs/ -name "*.java"`
+ 	jar uf smrt.jar #ALL_TRACERS# se/lth/cs/smartmodules/tracer/*.class se/lth/cs/smartmodules/*.class
+ 
+ smrt-run.jar: se/lth/cs/smartmodules/main/*.java
+diff --git a/container-sub/generate.py b/container-sub/generate.py
+index ae3cb9e..5c3eb56 100755
+--- a/container-sub/generate.py
++++ b/container-sub/generate.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ import os
+ 
+diff --git a/libsm/build.xml b/libsm/build.xml
+index a8439f7..47c1e5f 100644
+--- a/libsm/build.xml
++++ b/libsm/build.xml
+@@ -8,7 +8,9 @@
+   <property name="lib-sm" value="${lib}/sm.jar"/>
+   <property name="lib-sm-base" value="${lib}/sm-base.jar"/>
+   <!-- The path to the junit lib -->
+-  <property name="lib-junit4" value="/usr/share/java/junit4.jar"/>
++  <!-- The path to the junit lib (WARA-SW: piggybacking on regression-tests submodule) -->
++  <property name="lib-junit4" value="../frontend/regression-tests/lib/junit-4.11.jar"/>
++  <property name="lib-hamcrest-core" value="../frontend/regression-tests/lib/hamcrest-core-1.3.jar"/>
+ 
+   <target name="build-all" depends="build-size-instrumenter,build-sm">
+   </target>
+@@ -128,6 +130,7 @@
+     <junit failureproperty="test.failed">
+       <classpath>
+         <pathelement location="${lib-junit4}"/>
++        <pathelement location="${lib-hamcrest-core}"/>
+         <pathelement location="asm-7.0.jar"/>
+         <pathelement location="${lib-sm}"/>
+       </classpath>
