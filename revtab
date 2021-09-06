@@ -16,3 +16,5 @@ smartmodules-experimentalsetup/sm-java           git@git.cs.lth.se:creichen/sm-j
 # 347a47542fac1f1e2da67efdfc7670f8f594fc17
 spotbugs                                         https://github.com/spotbugs/spotbugs                https://github.com/spotbugs/spotbugs                f579c4b4f63dbbf8023385fab13ec84923519999
 titan.core                                       https://github.com/eclipse/titan.core               https://github.com/eclipse/titan.core               6f8e4b44f21a5e99ca8880f4fcdc59d12a302f95
+vaccinate                                        https://github.com/nilsceberg/vaccinate             https://github.com/nilsceberg/vaccinate             main
+

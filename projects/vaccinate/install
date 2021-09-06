@@ -1,0 +1,3 @@
+mkdir -p $OVE_STAGE_DIR/usr/bin
+cp vaccinate $OVE_STAGE_DIR/usr/bin
+

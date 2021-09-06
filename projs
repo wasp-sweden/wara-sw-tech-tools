@@ -80,6 +80,11 @@ errorprone:
   path:
     errorprone
 
+vaccinate:
+  deps:
+  needs:
+  path:
+    vaccinate
 
 # SmartModules
 
