@@ -27,4 +27,4 @@ dashboard = Dashboard(title = "V.A.C.C.I.N.A.T.E.")
 for (project, file) in result_files:
 	dashboard.add(Graph(create_histogram(file), title=project))
 
-dashboard.build().serve()
+#dashboard.build().serve()
