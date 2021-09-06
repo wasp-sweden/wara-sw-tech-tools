@@ -1,0 +1,30 @@
+#!/usr/bin/env python3
+
+from tep.dashboard import Dashboard, Image, Component, Graph
+from tep.results import *
+import plotly.express as px
+from pathlib import Path
+
+import sys
+import os
+import json
+
+projects = ["cassandra"]
+
+def create_histogram(filename):
+	with open(filename) as results_file:
+		results = json.load(results_file)
+		uname = results["environment"]["uname"]
+		data = {"characters/line": results["results"]}
+		return px.histogram(data)
+
+
+
+result_files = [(project, get_results_files(project, "vaccinate")[-1]) for project in projects]
+
+dashboard = Dashboard(title = "V.A.C.C.I.N.A.T.E.")
+
+for (project, file) in result_files:
+	dashboard.add(Graph(create_histogram(file), title=project))
+
+dashboard.build().serve()
