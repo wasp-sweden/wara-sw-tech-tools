@@ -59,7 +59,7 @@ class Image(DashboardObject):
 class Dashboard:
     def __init__(self, title):
         self.title = title
-        self.asset_dir = Path(os.environ["OVE_PROJECT_DIR"]).joinpath("dashboard")
+        self.asset_dir = Path(os.environ["OVE_PROJECT_DIR"]).joinpath("dashboard/assets")
         self.figure_dir = self.asset_dir.joinpath("figures")
         self._built = False
         self._objects = []
@@ -77,12 +77,16 @@ class Dashboard:
         self._built = True
         return self
 
+    def render(self):
+        return html.Main([obj.render(self) for obj in self._objects])
+    
+
     def serve(self):
         assert(self._built)
 
         self._app.layout = html.Div(children=[
             html.H1(["WARA-SW TEP Dashboard: ", html.B(self.title)]),
-            html.Main([obj.render(self) for obj in self._objects])
+            self.render()
         ])
         self._app.run_server(debug=True)
 

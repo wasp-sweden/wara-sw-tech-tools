@@ -1,0 +1,3 @@
+PYTHONPATH  $OVE_PROJECT_DIR/lib
+
+# make sure this ends with a newline
