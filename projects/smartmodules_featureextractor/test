@@ -1,2 +1,0 @@
-mkdir -p test/temp
-make -i test

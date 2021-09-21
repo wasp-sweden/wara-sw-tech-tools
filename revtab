@@ -1,20 +1,14 @@
-# name                                           fetch                                               push                                                rev
-actor-framework                                  https://github.com/actor-framework/actor-framework  https://github.com/actor-framework/actor-framework  065ad8568a2d5fb143cdebb5081282d6a12897d5
-cassandra                                        https://gitbox.apache.org/repos/asf/cassandra.git   https://gitbox.apache.org/repos/asf/cassandra.git   b74d7370cc89fa899f47f50c825ddaed2dd05c3f
-doxygen                                          https://github.com/doxygen/doxygen                  https://github.com/doxygen/doxygen                  63d7b19df11eb55a30e4af8fa492ee464ff353f5
-errorprone                                       https://github.com/google/error-prone               https://github.com/google/error-prone               0b546dec3a6bcb9b3f035fda45fbc1ab1b30660c
-hyperfine                                        https://github.com/sharkdp/hyperfine                https://github.com/sharkdp/hyperfine                49fcc4b
-jbrainy                                          git@git.cs.lth.se:noricc/jbrainy                    git@git.cs.lth.se:noricc/jbrainy                    c42d35d1962c3e3e81b786419499f64fb6830f61
-llvm                                             https://github.com/llvm/llvm-project                https://github.com/llvm/llvm-project                119545f4338efacabf99e06eeca965913f6617f2
-papi-java                                        https://github.com/creichen/papi-java               https://github.com/creichen/papi-java               master
-redis                                            https://github.com/redis/redis                      https://github.com/redis/redis                      b5f3996250eac3adbda407086fc519aebcb29797
-smartmodules-experimentalsetup                   git@git.cs.lth.se:noricc/experimentalsetup          git@git.cs.lth.se:noricc/experimentalsetup          197ff5ef33adacb5ece8555175806884165414ca
-smartmodules-experimentalsetup/coco              git@git.cs.lth.se:creichen/coco.git                 git@git.cs.lth.se:creichen/coco.git                 5d1b6249e5b356e39afed83bc36ac5def15d86c7
-smartmodules-experimentalsetup/collectionSwitch  https://github.com/Noricc/collectionSwitch.git      https://github.com/Noricc/collectionSwitch.git      fe0ff5c359e226223bac64656b834e7e392005e3
-smartmodules-experimentalsetup/featureextractor  git@git.cs.lth.se:noricc/featureextractor.git       git@git.cs.lth.se:noricc/featureextractor.git       0df9966b78fef811298d51ddb61c50cced5fd4f9
-smartmodules-experimentalsetup/sm-java           git@git.cs.lth.se:creichen/sm-java.git              git@git.cs.lth.se:creichen/sm-java.git              3fd20b5353c9976b7ae306bd34a4747e443321fc
-# 347a47542fac1f1e2da67efdfc7670f8f594fc17
-spotbugs                                         https://github.com/spotbugs/spotbugs                https://github.com/spotbugs/spotbugs                f579c4b4f63dbbf8023385fab13ec84923519999
-titan.core                                       https://github.com/eclipse/titan.core               https://github.com/eclipse/titan.core               6f8e4b44f21a5e99ca8880f4fcdc59d12a302f95
-vaccinate                                        https://github.com/nilsceberg/vaccinate             https://github.com/nilsceberg/vaccinate             main
+# name       fetch URL                                    push URL                                     rev
 
+# corpus
+actor-framework https://github.com/actor-framework/actor-framework  https://github.com/actor-framework/actor-framework  065ad8568a2d5fb143cdebb5081282d6a12897d5
+redis	https://github.com/redis/redis	https://github.com/redis/redis	b5f3996250eac3adbda407086fc519aebcb29797
+titan.core https://github.com/eclipse/titan.core https://github.com/eclipse/titan.core 6f8e4b44f21a5e99ca8880f4fcdc59d12a302f95
+doxygen	https://github.com/doxygen/doxygen	https://github.com/doxygen/doxygen 63d7b19df11eb55a30e4af8fa492ee464ff353f5
+cassandra https://gitbox.apache.org/repos/asf/cassandra.git https://gitbox.apache.org/repos/asf/cassandra.git b74d7370cc89fa899f47f50c825ddaed2dd05c3f
+
+# tools
+llvm    https://github.com/llvm/llvm-project    https://github.com/llvm/llvm-project 119545f4338efacabf99e06eeca965913f6617f2
+spotbugs	https://github.com/spotbugs/spotbugs	https://github.com/spotbugs/spotbugs	f579c4b4f63dbbf8023385fab13ec84923519999
+errorprone https://github.com/google/error-prone https://github.com/google/error-prone 0b546dec3a6bcb9b3f035fda45fbc1ab1b30660c
+vaccinate https://github.com/nilsceberg/vaccinate https://github.com/nilsceberg/vaccinate main

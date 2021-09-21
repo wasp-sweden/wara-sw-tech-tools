@@ -1,3 +1,0 @@
-mkdir -p log
-mkdir -p benchmark-results
-python3 benchmarking.py

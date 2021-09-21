@@ -1,5 +1,0 @@
-# TODO: not a great place to do this, and maybe OVE can handle it?
-git submodule init
-git submodule update
-
-./configure.sh "$OVE_BASE_DIR/papi-java"
