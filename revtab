@@ -1,4 +1,5 @@
 # name       fetch URL                                    push URL                                     rev
+.ove https://github.com/Ericsson/ove.git https://github.com/Ericsson/ove.git master
 
 # corpus
 actor-framework https://github.com/actor-framework/actor-framework  https://github.com/actor-framework/actor-framework  065ad8568a2d5fb143cdebb5081282d6a12897d5
