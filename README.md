@@ -33,9 +33,8 @@ If you have Docker installed, you can launch a pristine Ubuntu environment for b
 
 The corpus can then be used as follows:
 
-1. Run `ove patch` to apply changes needed by the corpus.
-2. Run `ove buildme` to compile the entire corpus, or specify a subset of the projects to build (e.g. `ove buildme spotbugs cassandra`).
-3. Tools can now be invoked using `ove <tool> [projects...]`, e.g. `ove spotbugs cassandra` to run SpotBugs on Cassandra. This will result in a SARIF report in `cassandra/cassandra-sb.sarif`.
+1. Run `ove buildme` to compile the entire corpus, or specify a subset of the projects to build (e.g. `ove buildme spotbugs cassandra`).
+2. Tools can now be invoked using `ove <tool> [projects...]`, e.g. `ove spotbugs cassandra` to run SpotBugs on Cassandra. This will result in a SARIF report in `cassandra/cassandra-sb.sarif`.
 
 # Docker images
 There are Docker images with batteries included that can be used to
