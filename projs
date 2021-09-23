@@ -86,3 +86,16 @@ vaccinate:
   path:
     vaccinate
 
+base:
+  needs_debian:
+    build-essential
+    pkg-config
+  needs_alpine:
+    build-base
+    pkgconf
+  needs_void:
+    base-devel
+    pkg-config
+  needs_arch:
+    base-devel
+    pkgconfig
