@@ -11,14 +11,14 @@ index d03cf420b2..d684534de8 100644
 +errorprone-build
 +
 diff --git a/build.xml b/build.xml
-index c39701978e..e0fd040f10 100644
+index c39701978e..8e2b37d4a0 100644
 --- a/build.xml
 +++ b/build.xml
 @@ -2457,4 +2457,79 @@
  
    </target>
  
-+  <property name="spotbugs.home" value="/ove/spotbugs/spotbugs/build/install/spotbugs" />
++  <property name="spotbugs.home" value="${env.OVE_BASE_DIR}/spotbugs/spotbugs/build/install/spotbugs" />
 +
 +  <taskdef
 +    resource="edu/umd/cs/findbugs/anttask/tasks.properties"
