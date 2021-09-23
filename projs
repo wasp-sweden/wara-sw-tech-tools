@@ -2,6 +2,7 @@
 
 actor_framework:
   deps:
+    base
   needs:
     cmake
     g++
@@ -11,6 +12,7 @@ actor_framework:
 
 redis:
   deps:
+    base
   needs: 
     make
     gcc
@@ -21,6 +23,7 @@ redis:
 
 titan_core:
   deps:
+    base
   needs:
     make
     bison
@@ -36,6 +39,7 @@ titan_core:
 
 doxygen:
   deps:
+    base
   needs:
     cmake
     g++
@@ -58,6 +62,7 @@ cassandra:
 
 llvm:
   deps:
+    base
   needs:
     g++
     cmake
@@ -82,9 +87,12 @@ errorprone:
 
 vaccinate:
   deps:
+    base
   needs:
   path:
     vaccinate
+
+# Misc:
 
 base:
   needs_debian:
