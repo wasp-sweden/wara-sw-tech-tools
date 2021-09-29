@@ -2,6 +2,7 @@
 
 actor_framework:
   deps:
+    base
   needs:
     cmake
     g++
@@ -11,6 +12,7 @@ actor_framework:
 
 redis:
   deps:
+    base
   needs: 
     make
     gcc
@@ -21,6 +23,7 @@ redis:
 
 titan_core:
   deps:
+    base
   needs:
     make
     bison
@@ -36,6 +39,7 @@ titan_core:
 
 doxygen:
   deps:
+    base
   needs:
     cmake
     g++
@@ -53,11 +57,19 @@ cassandra:
     ant
   path: cassandra
 
+commons_numbers_examples:
+  deps:
+  needs:
+    maven
+  path:
+    commons-numbers/commons-numbers-examples
+
 
 # Tools:
 
 llvm:
   deps:
+    base
   needs:
     g++
     cmake
@@ -82,6 +94,7 @@ errorprone:
 
 vaccinate:
   deps:
+    base
   needs:
   path:
     vaccinate
@@ -93,10 +106,19 @@ depclean:
   path:
     depclean
 
-commons_numbers_examples:
-  deps:
-  needs:
-    maven
-  path:
-    commons-numbers/commons-numbers-examples
+# Misc:
+
+base:
+  needs_debian:
+    build-essential
+    pkg-config
+  needs_alpine:
+    build-base
+    pkgconf
+  needs_void:
+    base-devel
+    pkg-config
+  needs_arch:
+    base-devel
+    pkgconfig
 
