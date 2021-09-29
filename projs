@@ -93,3 +93,10 @@ depclean:
   path:
     depclean
 
+commons_numbers_examples:
+  deps:
+  needs:
+    maven
+  path:
+    commons-numbers/commons-numbers-examples
+
