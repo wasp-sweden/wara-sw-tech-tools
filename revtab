@@ -11,3 +11,5 @@ llvm             https://github.com/llvm/llvm-project                https://git
 spotbugs         https://github.com/spotbugs/spotbugs                https://github.com/spotbugs/spotbugs                f579c4b4f63dbbf8023385fab13ec84923519999
 errorprone       https://github.com/google/error-prone               https://github.com/google/error-prone               0b546dec3a6bcb9b3f035fda45fbc1ab1b30660c
 vaccinate        https://github.com/nilsceberg/vaccinate             https://github.com/nilsceberg/vaccinate             main
+depclean         https://github.com/castor-software/depclean         https://github.com/castor-software/depclean         de9a9c89004be5baa8d73744a4d1f53c25e3a6be
+

@@ -86,3 +86,10 @@ vaccinate:
   path:
     vaccinate
 
+depclean:
+  deps:
+  needs:
+    maven
+  path:
+    depclean
+
