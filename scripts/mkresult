@@ -1,0 +1,4 @@
+#!/bin/bash
+
+mkdir -p $RESULT_DIR/$1
+echo $RESULT_DIR/$1/$2-$(date -Ins).json
