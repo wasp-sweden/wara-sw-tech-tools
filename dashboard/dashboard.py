@@ -54,11 +54,15 @@ class DashboardApp:
     def asset(self, path):
         return self._app.get_asset_url(str(Path("figures").joinpath(path)))
 
-G = {}
-exec(open("wara-sw-tech-tools/projects/vaccinate/dash").read(), G)
-
 app = DashboardApp()
-app.add("vaccinate", G["dashboard"])
+
+def load_dashboard(name):
+    G = {}
+    exec(open(f"wara-sw-tech-tools/projects/{name}/dash").read(), G)
+    app.add(name, G["dashboard"])
+
+load_dashboard("vaccinate")
+load_dashboard("depclean")
 
 @app._app.callback(
     dash.dependencies.Output("dashboard-area", "children"),
