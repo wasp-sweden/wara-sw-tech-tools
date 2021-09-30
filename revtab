@@ -1,16 +1,16 @@
 # name           fetch URL                                           push URL                                            rev
 .ove             https://github.com/Ericsson/ove.git                 https://github.com/Ericsson/ove.git                 master
 # corpus
-actor-framework  https://github.com/actor-framework/actor-framework  https://github.com/actor-framework/actor-framework  065ad8568a2d5fb143cdebb5081282d6a12897d5
-redis            https://github.com/redis/redis                      https://github.com/redis/redis                      b5f3996250eac3adbda407086fc519aebcb29797
-titan.core       https://github.com/eclipse/titan.core               https://github.com/eclipse/titan.core               6f8e4b44f21a5e99ca8880f4fcdc59d12a302f95
-doxygen          https://github.com/doxygen/doxygen                  https://github.com/doxygen/doxygen                  63d7b19df11eb55a30e4af8fa492ee464ff353f5
-cassandra        https://gitbox.apache.org/repos/asf/cassandra.git   https://gitbox.apache.org/repos/asf/cassandra.git   b74d7370cc89fa899f47f50c825ddaed2dd05c3f
-commons-numbers  https://github.com/apache/commons-numbers           https://github.com/apache/commons-numbers           c102b6364644fd127d16c31704cdb7e8891c0371
+actor-framework  https://github.com/actor-framework/actor-framework  https://github.com/actor-framework/actor-framework  0.18.5
+redis            https://github.com/redis/redis                      https://github.com/redis/redis                      6.2.5
+titan.core       https://github.com/eclipse/titan.core               https://github.com/eclipse/titan.core               8.0.0
+doxygen          https://github.com/doxygen/doxygen                  https://github.com/doxygen/doxygen                  Release_1_9_2
+cassandra        https://gitbox.apache.org/repos/asf/cassandra.git   https://gitbox.apache.org/repos/asf/cassandra.git   cassandra-4.0.1
+commons-numbers  https://github.com/apache/commons-numbers           https://github.com/apache/commons-numbers           rel/commons-numbers-1.0
 # tools
-llvm             https://github.com/llvm/llvm-project                https://github.com/llvm/llvm-project                119545f4338efacabf99e06eeca965913f6617f2
-spotbugs         https://github.com/spotbugs/spotbugs                https://github.com/spotbugs/spotbugs                f579c4b4f63dbbf8023385fab13ec84923519999
-errorprone       https://github.com/google/error-prone               https://github.com/google/error-prone               0b546dec3a6bcb9b3f035fda45fbc1ab1b30660c
+llvm             https://github.com/llvm/llvm-project                https://github.com/llvm/llvm-project                llvmorg-12.0.1
+spotbugs         https://github.com/spotbugs/spotbugs                https://github.com/spotbugs/spotbugs                4.4.1
+errorprone       https://github.com/google/error-prone               https://github.com/google/error-prone               v2.9.0
 vaccinate        https://github.com/nilsceberg/vaccinate             https://github.com/nilsceberg/vaccinate             main
-depclean         https://github.com/castor-software/depclean         https://github.com/castor-software/depclean         de9a9c89004be5baa8d73744a4d1f53c25e3a6be
+depclean         https://github.com/castor-software/depclean         https://github.com/castor-software/depclean         2.0.0
 
