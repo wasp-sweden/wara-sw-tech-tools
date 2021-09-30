@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import sys
+import json
 
 keys = {
     "USED DIRECT DEPENDENCIES": "usedDirect",
@@ -63,5 +64,5 @@ while next_section:
 
     next_section = find_next_section(next_line)
 
-print(output)
+print(json.dumps(output))
 

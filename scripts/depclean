@@ -10,5 +10,11 @@ elif ! dir=$(ove-proj2path $1); then
 fi
 
 cd ${dir}
-mvn se.kth.castor:depclean-maven-plugin:2.0.2-SNAPSHOT:depclean
+
+output=$(ove mkresult depclean $1)
+mvn se.kth.castor:depclean-maven-plugin:2.0.2-SNAPSHOT:depclean | tee /dev/stderr | $OVE_PROJECT_DIR/parsers/depclean/parse.py > $output
+
+echo
+echo "Results saved to $output."
+echo
 
