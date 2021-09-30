@@ -1,4 +1,21 @@
 #!/usr/bin/env bash
-mkdir build
+mkdir -p build
 cd build
-cmake -G Ninja -DCMAKE_INSTALL_PREFIX="$OVE_STAGE_DIR/usr" -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra" ../llvm
+
+# https://llvm.org/docs/CMake.html#llvm-specific-variables
+link_jobs=1
+tot=$(free | { read foo; read bar total foo; echo $(($total/1024/1024 + 1)); })
+if [ "x$tot" != "x" ]; then
+	link_jobs=$((tot/15 - 1))
+	if [ ${link_jobs} -lt 1 ]; then
+		link_jobs=1
+	fi
+fi
+
+cmake \
+	-G Ninja \
+	-DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
+	-DCMAKE_INSTALL_PREFIX="$OVE_STAGE_DIR/usr" \
+	-DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra" \
+	-DLLVM_PARALLEL_LINK_JOBS=${link_jobs} \
+	../llvm
