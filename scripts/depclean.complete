@@ -1,0 +1,2 @@
+COMPREPLY=( $(compgen -W "$OVE_PROJECT_LIST" -- "${cur}") )
+

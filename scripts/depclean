@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [ $# -ne 1 ]; then
+	echo "error: which project? choose one of:"
+	printf "%s\n" $OVE_PROJECT_LIST
+	exit 1
+elif ! dir=$(ove-proj2path $1); then
+	echo "error: can not get path for '$1'"
+	exit
+fi
+
+cd ${dir}
+mvn se.kth.castor:depclean-maven-plugin:2.0.2-SNAPSHOT:depclean
+
