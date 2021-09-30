@@ -3,7 +3,6 @@
 # corpus
 actor-framework  https://github.com/actor-framework/actor-framework  https://github.com/actor-framework/actor-framework  0.18.5
 redis            https://github.com/redis/redis                      https://github.com/redis/redis                      6.2.5
-titan.core       https://github.com/eclipse/titan.core               https://github.com/eclipse/titan.core               8.0.0
 doxygen          https://github.com/doxygen/doxygen                  https://github.com/doxygen/doxygen                  Release_1_9_2
 cassandra        https://gitbox.apache.org/repos/asf/cassandra.git   https://gitbox.apache.org/repos/asf/cassandra.git   cassandra-4.0.1
 commons-numbers  https://github.com/apache/commons-numbers           https://github.com/apache/commons-numbers           rel/commons-numbers-1.0
