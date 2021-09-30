@@ -1,10 +1,10 @@
 #!/bin/bash
 
 RESULTS=$(vaccinate src/java/org/apache/cassandra/**/*.java | grep mean | sed -E 's/^[^:]+: (.+)/\1,/g' | tr -d '\n' | sed -E 's/^(.*),$/[\1]/g')
-UNIQUE=$(date +%Y-%m-%dT%H:%M:%S)
 
-mkdir -p $OVE_BASE_DIR/results/cassandra
-cat > $OVE_BASE_DIR/results/cassandra/vaccinate-$UNIQUE.json <<EOF
+output=$(ove mkresult vaccinate cassandra)
+
+cat > $output <<EOF
 {
 	"environment": {
 		"uname": "$(uname -a)"
@@ -13,3 +13,6 @@ cat > $OVE_BASE_DIR/results/cassandra/vaccinate-$UNIQUE.json <<EOF
 }
 EOF
 
+echo
+echo "Results saved to $output."
+echo

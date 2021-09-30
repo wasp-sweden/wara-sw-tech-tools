@@ -1,7 +1,7 @@
 from pathlib import Path
 import os
 
-def get_results_files(project, tool):
-	results_dir = Path(os.environ["OVE_BASE_DIR"], "results", project)
-	return list(results_dir.glob(tool + "-*.json"))
+def get_results_files(tool, project):
+	results_dir = Path(os.environ["RESULT_DIR"], tool)
+	return list(results_dir.glob(project + "-*.json"))
 

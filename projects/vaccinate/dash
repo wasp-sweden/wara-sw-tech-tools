@@ -19,8 +19,7 @@ def create_histogram(filename):
 		return px.histogram(data)
 
 
-
-result_files = [(project, get_results_files(project, "vaccinate")[-1]) for project in projects]
+result_files = [(project, get_results_files("vaccinate", project)[-1]) for project in projects]
 
 dashboard = Dashboard(title = "V.A.C.C.I.N.A.T.E.")
 
