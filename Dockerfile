@@ -5,7 +5,8 @@ ENV LANG C.UTF-8
 ENV TZ=Etc/GMT-1
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt-get update
-RUN apt-get install -y sudo bsdmainutils file git less tree binutils software-properties-common
+RUN apt-get install -y sudo bsdmainutils file git less tree binutils software-properties-common python3 python3-pip
+RUN pip3 install plotly dash pandas
 RUN add-apt-repository -y ppa:cwchien/gradle
 RUN apt-get update
 RUN groupadd -g $GID ove

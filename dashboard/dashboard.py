@@ -49,7 +49,7 @@ class DashboardApp:
             ]),
             html.Div([], id="dashboard-area")
         ])
-        self._app.run_server(debug=True)
+        self._app.run_server(debug=True, host="0.0.0.0")
 
     def asset(self, path):
         return self._app.get_asset_url(str(Path("figures").joinpath(path)))
