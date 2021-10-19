@@ -1,12 +1,14 @@
 from tep.dashboard import Dashboard
 
+import yaml
 import os
+import sys
 import shutil
 from pathlib import Path
 
 import dash
-import dash_html_components as html
-import dash_core_components as dcc
+from dash import html
+from dash import dcc
 
 
 class DashboardApp:
@@ -57,12 +59,15 @@ class DashboardApp:
 app = DashboardApp()
 
 def load_dashboard(name):
-    G = {}
-    exec(open(f"wara-sw-tech-tools/projects/{name}/dash").read(), G)
-    app.add(name, G["dashboard"])
+    try:
+        G = {}
+        exec(open(f"wara-sw-tech-tools/projects/{name}/dash").read(), G)
+        app.add(name, G["dashboard"])
+    except FileNotFoundError:
+        print(f"failed to load dashboard {name}")
 
-load_dashboard("vaccinate")
-load_dashboard("depclean")
+#load_dashboard("vaccinate")
+#load_dashboard("depclean")
 
 @app._app.callback(
     dash.dependencies.Output("dashboard-area", "children"),
@@ -75,6 +80,14 @@ def show_dashboard(name):
         return dash.render()
     else:
         return []
+
+with open(Path(os.environ["OVE_PROJECT_DIR"]).joinpath("projs")) as f:
+    projects = yaml.safe_load(f)
+
+print(sys.argv)
+for project in sys.argv:
+    if project in projects:
+        load_dashboard(project)
 
 app.build()
 app.serve()

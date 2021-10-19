@@ -5,7 +5,7 @@ from tep.results import *
 import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
-import dash_html_components as html
+from dash import html
 from pathlib import Path
 
 import sys

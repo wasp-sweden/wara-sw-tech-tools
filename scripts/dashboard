@@ -1,4 +1,4 @@
 #!/bin/bash
 
-python3 $OVE_PROJECT_DIR/dashboard/dashboard.py
+python3 $OVE_PROJECT_DIR/dashboard/dashboard.py $@
 
