@@ -1,4 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+set -e
+set -o pipefail
 
 if [ $# -ne 1 ]; then
 	echo "error: which project? choose one of:"
@@ -6,15 +9,31 @@ if [ $# -ne 1 ]; then
 	exit 1
 elif ! dir=$(ove-proj2path $1); then
 	echo "error: can not get path for '$1'"
-	exit
+	exit 1
+fi
+
+if [ ! -d ${OVE_BASE_DIR}/depclean ]; then
+	if ! ove fetch depclean; then
+		echo "error: 'ove fetch depclean' failed"
+		exit 1
+	fi
+fi
+
+depclean_version=$(git -C ${OVE_BASE_DIR}/depclean describe --tags)
+if [ -s ${OVE_BASE_DIR}/depclean/depclean-core/target/depclean-core-${depclean_version}.jar ] && \
+	[ -s ${OVE_BASE_DIR}/depclean/depclean-maven-plugin/target/depclean-maven-plugin-${depclean_version}.jar ]; then
+	echo "info: depclean is already built"
+else
+	ove buildme-parallel depclean
 fi
 
 cd ${dir}
 
 output=$(ove mkresult depclean $1)
-mvn se.kth.castor:depclean-maven-plugin:2.0.0:depclean | tee /dev/stderr | $OVE_PROJECT_DIR/parsers/depclean/parse.py > $output
+if ! mvn -e -q se.kth.castor:depclean-maven-plugin:${depclean_version}:depclean | tee /dev/stderr | $OVE_PROJECT_DIR/parsers/depclean/parse.py > $output; then
+	echo "error: depclean failed"
+	exit 1
+fi
 
 echo
 echo "Results saved to $output."
-echo
-
