@@ -12,7 +12,7 @@ fi
 cd ${dir}
 
 output=$(ove mkresult depclean $1)
-mvn se.kth.castor:depclean-maven-plugin:2.0.2-SNAPSHOT:depclean | tee /dev/stderr | $OVE_PROJECT_DIR/parsers/depclean/parse.py > $output
+mvn se.kth.castor:depclean-maven-plugin:2.0.0:depclean | tee /dev/stderr | $OVE_PROJECT_DIR/parsers/depclean/parse.py > $output
 
 echo
 echo "Results saved to $output."
