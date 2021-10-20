@@ -9,7 +9,7 @@ if [ "$project" == "base" ] || [ "$project" == "" ]; then
     # Build base
     echo "Building base Docker..."
     cp "$OVE_BASE_DIR/.ove/ove.bash" "$OVE_PROJECT_DIR/docker/"
-    cp -r "$OVE_BASE_DIR/.ove" "$OVE_PROJECT_DIR/docker/ove"
+    rsync -av --exclude ".git" "$OVE_BASE_DIR/.ove/" "$OVE_PROJECT_DIR/docker/ove"
     docker build -t $DOCKER_REPO $@ $OVE_PROJECT_DIR || exit 1
 else
     echo "Building Docker image for $project..."
