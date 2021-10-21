@@ -21,53 +21,52 @@ def make_pie(results):
 	print(values)
 	return go.Pie(labels=labels, values=values, hole=0.5)
 
-def create_tables(filename):
-	with open(filename) as results_file:
-		results = json.load(results_file)
-		fig = make_subplots(
-			rows = 2,
-			cols = 3,
-			subplot_titles=[
-				"Used direct",
-				"Used inherited",
-				"Used transitive",
-				"Potentially unused direct",
-				"Potentially unused inherited",
-				"Potentially unused transitive",
-			],
-			specs=[
-				[{'type':'domain'}, {'type':'domain'}, {'type':'domain'}],
-				[{'type':'domain'}, {'type':'domain'}, {'type':'domain'}],
-				]
-			)
+def create_tables(results):
+	fig = make_subplots(
+		rows = 2,
+		cols = 3,
+		subplot_titles=[
+			"Used direct",
+			"Used inherited",
+			"Used transitive",
+			"Potentially unused direct",
+			"Potentially unused inherited",
+			"Potentially unused transitive",
+		],
+		specs=[
+			[{'type':'domain'}, {'type':'domain'}, {'type':'domain'}],
+			[{'type':'domain'}, {'type':'domain'}, {'type':'domain'}],
+			]
+		)
 
-		fig.add_trace(make_pie(results["usedDirect"]), row = 1, col = 1)
-		fig.add_trace(make_pie(results["usedInherited"]), row = 1, col = 2)
-		fig.add_trace(make_pie(results["usedTransitive"]), row = 1, col = 3)
-		fig.add_trace(make_pie(results["potentiallyUnusedDirect"]), row = 2, col = 1)
-		fig.add_trace(make_pie(results["potentiallyUnusedInherited"]), row = 2, col = 2)
-		fig.add_trace(make_pie(results["potentiallyUnusedTransitive"]), row = 2, col = 3)
+	fig.add_trace(make_pie(results["results"]["usedDirect"]), row = 1, col = 1)
+	fig.add_trace(make_pie(results["results"]["usedInherited"]), row = 1, col = 2)
+	fig.add_trace(make_pie(results["results"]["usedTransitive"]), row = 1, col = 3)
+	fig.add_trace(make_pie(results["results"]["potentiallyUnusedDirect"]), row = 2, col = 1)
+	fig.add_trace(make_pie(results["results"]["potentiallyUnusedInherited"]), row = 2, col = 2)
+	fig.add_trace(make_pie(results["results"]["potentiallyUnusedTransitive"]), row = 2, col = 3)
 
-		fig.update(layout_showlegend=False)
+	fig.update(layout_showlegend=False)
 
-		#fig.add_trace(
-		#	go.Table(
-		#		header=dict(values=['X Scores', 'Y Scores']),
-		#		cells=dict(values=[[100, 90, 80, 90], [95, 85, 75, 95]])
-		#	),
-		#	row = 2,
-		#	col = 2
-		#)
+	#fig.add_trace(
+	#	go.Table(
+	#		header=dict(values=['X Scores', 'Y Scores']),
+	#		cells=dict(values=[[100, 90, 80, 90], [95, 85, 75, 95]])
+	#	),
+	#	row = 2,
+	#	col = 2
+	#)
 
-		return fig
+	return fig
 
 
-result_files = [(project, get_results_files("depclean", project)[-1]) for project in projects]
+result_files = [(project, get_results_files("depclean", project, "simple")[-1]) for project in projects]
 
 dashboard = Dashboard(title = "DepClean")
-
 for (project, file) in result_files:
-	dashboard.add(Graph(create_tables(file), title=project))
+	with open(file) as results_file:
+		results = json.load(results_file)
+		dashboard.add(Graph(create_tables(results), title=project, meta=results["meta"]))
 
 if __name__ == "__main__":
 	dashboard.build().serve()

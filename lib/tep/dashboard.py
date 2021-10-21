@@ -7,10 +7,11 @@ from dash import html
 from dash import dcc
 
 class DashboardObject:
-    def __init__(self, title, description = "", dependencies = []):
+    def __init__(self, title, description = "", dependencies = [], meta = None):
         self.title = title
         self.description = description
         self.dependencies = dependencies
+        self.meta = meta
     
     def build(self, path):
         for dep in self.dependencies:
@@ -20,6 +21,7 @@ class DashboardObject:
         return html.Div(children=[
             html.H2(self.title),
             dcc.Markdown(self.description),
+            html.Pre(self.meta["env"]["uname"]),
             self._render(dashboard)
         ], className="dashboard-object")
 
@@ -28,8 +30,8 @@ class DashboardObject:
 
 
 class Graph(DashboardObject):
-    def __init__(self, figure, title, description = ""):
-        super().__init__(title, description)
+    def __init__(self, figure, title, description = "", meta = None):
+        super().__init__(title, description, meta=meta)
         figure.update_layout(template="plotly_dark")
         self._figure = figure
 
