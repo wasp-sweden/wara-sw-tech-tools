@@ -3,6 +3,21 @@
 set -e
 set -o pipefail
 
+output="default"
+optstring="s" 
+
+while getopts ${optstring} flag; do
+	case ${flag} in
+		s) 
+			output=simple
+			shift
+			;;
+		?)
+			echo "invalid option: ${OPTARG}"
+			;;
+	esac
+done
+
 if [ $# -ne 1 ]; then
 	echo "error: which project? choose one of:"
 	printf "%s\n" $OVE_PROJECT_LIST
@@ -29,7 +44,27 @@ fi
 
 cd ${dir}
 
-if ! mvn -e -q se.kth.castor:depclean-maven-plugin:${depclean_version}:depclean | tee /dev/stderr | $OVE_PROJECT_DIR/parsers/depclean/parse.py | ove mkresult depclean $1 simple; then
-	echo "error: depclean failed"
-	exit 1
-fi
+function resultInSimple {
+	if ! mvn -e -q se.kth.castor:depclean-maven-plugin:${depclean_version}:depclean | tee /dev/stderr | $OVE_PROJECT_DIR/parsers/depclean/parse.py | ove mkresult depclean $1 simple; then
+		echo "error: depclean failed"
+		exit 1
+	fi
+}
+
+function resultInJSON {
+	mvn -e -q se.kth.castor:depclean-maven-plugin:${depclean_version}:depclean -DcreateResultJson=true
+	ove mkresult depclean $1 < examples-jmh/depclean-results.json
+}
+
+case ${output} in
+	simple) 
+		resultInSimple $1
+		;;
+	default)
+		resultInJSON $1
+		;;
+	*)
+		echo "invalid option: ${output}"
+		;;
+esac
+
