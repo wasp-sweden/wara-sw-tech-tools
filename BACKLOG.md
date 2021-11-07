@@ -20,8 +20,8 @@
 - [] depclean
      + [N] make depclean run and produce output
      + [N] create depclean test dashboard
-     - [] show some actually useful information on dashboard
-     - [] make dashboard aesthetically pleasing
+     - [M] show some actually useful information on dashboard
+     - [N] make dashboard aesthetically pleasing
 - [] record results in some structured manner
      + [N] directory structure
      - [N] metadata
