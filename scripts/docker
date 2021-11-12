@@ -7,7 +7,12 @@ fi
 
 cd "$OVE_BASE_DIR"
 
-NAME=ove-wara-container
+NAME=$OVE_DOCKER_CONTAINER_NAME
+
+if [ "$NAME" == "" ]; then
+	NAME=ove-wara-container
+fi
+
 CLEAN=0
 docker inspect "$NAME" &> /dev/null || CLEAN=1
 [ "$1" == "--clean" ] && CLEAN=1
