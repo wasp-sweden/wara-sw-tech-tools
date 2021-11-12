@@ -8,9 +8,14 @@ fi
 cd "$OVE_BASE_DIR"
 
 NAME=$OVE_DOCKER_CONTAINER_NAME
+PORT=$OVE_DOCKER_CONTAINER_HTTP
 
 if [ "$NAME" == "" ]; then
 	NAME=ove-wara-container
+fi
+
+if [ "$PORT" == "" ]; then
+	PORT=8050
 fi
 
 CLEAN=0
@@ -23,9 +28,8 @@ if [ $CLEAN == 1 ]; then
 		echo "Starting clean environment..."
 		docker rm -f "$NAME" 2> /dev/null
 		$OVE_PROJECT_DIR/scripts/docker-image base --no-cache --build-arg UID --build-arg GID || exit 1
-		docker run -ti --name="$NAME" -v="$PWD:/ove" -p 127.0.0.1:8050:8050 warasw/tep:latest
+		docker run -ti --name="$NAME" -v="$PWD:/ove" -p "127.0.0.1:$PORT:8050" warasw/tep:latest
 else
 		echo "Reattaching..."
 		docker start -ai "$NAME"
 fi
-
