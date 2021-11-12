@@ -14,35 +14,32 @@
   - Script to check/install cloud access setup on client (ask for everything)
   - Spin up ERDC image, run benchmark or test on ERDC, transfer results, shut down image
 
-## Miscellaneous
-- [AN] Pre-built Docker image
-
-## Milestone 2: Java Support
-- [CR] Driver projects present their status, determine next steps
-
-## Milestone Y: demonstrator demonstrator
-- [] search for tools for comparing outputs of these tools and check for input formats
-     - csv support for various hand-written tools?
-     - search for existing statistical tools that can: aggregate, normalise, classify, sort, plot (bar charts, violin plots etc.), regression analysis and other correlation mechanisms, diffing
-- [] decide on standard format
-- [] obtain tool output in standard format
-- [] support for second tool
-- [] diff standard format outputs for tools
-- [ALL] "Towards Milestone 3": plan forward
-- [] generate html or pdf output for visualising tool output for public consumption
+## Milestone X: end-to-end demonstrator example
++ [AN] Pre-built Docker images
++ [N] build a basic dashboard application
+- [] depclean
+     + [N] make depclean run and produce output
+     + [N] create depclean test dashboard
+     - [M] show some actually useful information on dashboard
+     - [N] make dashboard aesthetically pleasing
+- [] record results in some structured manner
+     + [N] directory structure
+     - [N] metadata
+     - [] handle different formats in some unified way (SARIF is nice but probably doesn't work for everything)
 - [] package + description: how to build a demonstrator for your tool (consider container image?)
-- [] c/c++ cache (ccache etc)
-- **Milestone Y** completed: demonstrator demonstrator up and running
+- [] figure out how to maintain some kind of separation between tools and corpus
+     - [] repo directory structure
 
-
-## Milestone Z: scale to breadth and fix all bugs that are in the way (more C/C++ corpus projects and tools)
+## Milestone Y: scale to breadth and fix all bugs that are in the way (more C/C++ corpus projects and tools)
+- discuss what formats to use for different kinds of tools (see above)
 - prestudy for dynamic tools in next Milestone
 
+## Miscellaneous
+- [] fix cassandra patch issue in some better way
 
 # Completed
 
 + **Milestone 1** completed: 1 tool running on one corpus code base
-+ **Prep Milestone X** : initial discussions wrt tool output formats
 
 # Research Project Drivers
 
