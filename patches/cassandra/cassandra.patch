@@ -1,20 +1,8 @@
-diff --git a/.gitignore b/.gitignore
-index d03cf420b2..d684534de8 100644
---- a/.gitignore
-+++ b/.gitignore
-@@ -80,3 +80,7 @@ doc/source/tools/nodetool
- 
- # Python virtual environment
- venv/
-+
-+# ErrorProne workspace
-+errorprone-build
-+
 diff --git a/build.xml b/build.xml
-index c39701978e..8e2b37d4a0 100644
+index 2bb22a74ad..c23fa1fa71 100644
 --- a/build.xml
 +++ b/build.xml
-@@ -2457,4 +2457,79 @@
+@@ -2140,6 +2140,81 @@
  
    </target>
  
@@ -40,7 +28,7 @@ index c39701978e..8e2b37d4a0 100644
 +  <target name="errorprone"
 +      depends="maven-ant-tasks-retrieve-build,errorprone-project" description="Compile Cassandra classes"/>
 +
-+  <target depends="init,gen-cql3-grammar,generate-cql-html,generate-jflex-java,rat-report"
++  <target depends="init,gen-cql3-grammar,generate-cql-html,generate-jflex-java,rat-check"
 +          name="errorprone-project">
 +      <echo message="${ant.project.name}: ${ant.file}"/>
 +      <!-- Order matters! -->
@@ -93,4 +81,6 @@ index c39701978e..8e2b37d4a0 100644
 +      </javac>
 +  </target>
 +
+   <import file="${basedir}/.build/build-resolver.xml"/>
+   <import file="${basedir}/.build/build-rat.xml"/>
  </project>
