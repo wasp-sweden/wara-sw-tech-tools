@@ -13,3 +13,4 @@ errorprone       https://github.com/google/error-prone               https://git
 vaccinate        https://github.com/nilsceberg/vaccinate             https://github.com/nilsceberg/vaccinate             main
 depclean         https://github.com/castor-software/depclean         https://github.com/castor-software/depclean         2.0.0
 dmce             https://github.com/PatrikAAberg/dmce.git            https://github.com/PatrikAAberg/dmce.git            master
+dmce-examples    https://github.com/PatrikAAberg/dmce-examples.git   https://github.com/PatrikAAberg/dmce-examples.git   master
