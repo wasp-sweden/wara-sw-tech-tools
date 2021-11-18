@@ -1,0 +1,4 @@
+#!/bin/bash -e
+
+sudo rm -f /tmp/dmce-dentry && cp ../../dmce/test/container-entry-example-threads /tmp/dmce-dentry && docker run -ti -v /tmp:/tmp --entrypoint /tmp/dmce-dentry ubuntu:20.04
+
