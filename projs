@@ -56,6 +56,10 @@ dmce_examples_patchcov:
   path:
     dmce-examples/patchcov
 
+dmce_examples_threads:
+  path:
+    dmce-examples/threads
+
 # Tools:
 
 llvm:
