@@ -1,4 +1,7 @@
-# name			timeout (s)	type	path		command
-# ---------------------------------------------------------------------
-doxygen-clang-tidy	0		0	doxygen/build	"ove clang-tidy doxygen"
-
+# name			                timeout (s)	type	path		                        command
+# --------------------------------------------------------------------------------------------------------------------
+doxygen-clang-tidy	            0		    0	    doxygen/build	                    "ove clang-tidy doxygen"
+dmce-docker-simplecrash	        0		    0	    wara-sw-tech-tools/t	            "./dmce-docker-simplecrash"
+dmce-docker-patchcov	        0		    0	    wara-sw-tech-tools/t	            "./dmce-docker-patchcov"
+dmce-docker-simple	            0		    0	    wara-sw-tech-tools/t	            "./dmce-docker-simple"
+dmce-docker-threads	            0		    0	    wara-sw-tech-tools/t	            "./dmce-docker-threads"

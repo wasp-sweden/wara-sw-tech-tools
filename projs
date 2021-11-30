@@ -48,6 +48,17 @@ commons_numbers_examples:
   path:
     commons-numbers/commons-numbers-examples
 
+dmce_examples_simplecrash:
+  path:
+    dmce-examples/simplecrash
+
+dmce_examples_patchcov:
+  path:
+    dmce-examples/patchcov
+
+dmce_examples_threads:
+  path:
+    dmce-examples/threads
 
 # Tools:
 
