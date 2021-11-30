@@ -4,7 +4,6 @@ import datetime
 
 def get_results_files(tool, project, tag="default"):
 	results_dir = Path(os.environ["RESULT_DIR"], tool, tag)
-	print(results_dir)
 	return list(results_dir.glob(project + "-*.json"))
 
 # has the sneaky side effect of potentially creating the directory, sorry

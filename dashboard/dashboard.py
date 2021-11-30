@@ -61,7 +61,7 @@ app = DashboardApp()
 def load_dashboard(name):
     try:
         G = {}
-        exec(open(f"wara-sw-tech-tools/projects/{name}/dash").read(), G)
+        exec(Path(os.environ["OVE_PROJECT_DIR"]).joinpath(f"projects/{name}/dash").open().read(), G)
         app.add(name, G["dashboard"])
     except FileNotFoundError:
         print(f"failed to load dashboard {name}")
@@ -84,7 +84,6 @@ def show_dashboard(name):
 with open(Path(os.environ["OVE_PROJECT_DIR"]).joinpath("projs")) as f:
     projects = yaml.safe_load(f)
 
-print(sys.argv)
 for project in sys.argv:
     if project in projects:
         load_dashboard(project)
