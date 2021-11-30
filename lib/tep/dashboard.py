@@ -20,6 +20,7 @@ class DashboardObject:
     def render(self, dashboard):
         return html.Div(children=[
             html.H2(self.title),
+            html.H3(self.meta["timestamp"]),
             dcc.Markdown(self.description),
             html.Pre(self.meta["env"]["uname"]),
             self._render(dashboard)
