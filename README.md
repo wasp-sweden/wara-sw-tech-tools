@@ -35,7 +35,7 @@ If you have Docker installed, you can launch a pristine Ubuntu environment for b
 The corpus can then be used as follows:
 
 1. Run `ove buildme` to compile the entire corpus, or specify a subset of the projects to build (e.g. `ove buildme depclean commons_numbers_examples`).
-2. Tools can now be invoked using `ove <tool> [projects...]`, e.g. `ove depclean commons_numbers_examples` to run DepClean on the Apache Commons Numbers examples. This will result in a JSON report in `results/depclean/commons_numbers_examples-<timestamp>.json`.
+2. Tools can now be invoked using `ove <tool> [subject...]`, e.g. `ove depclean -s commons_numbers_examples` to run DepClean on the Apache Commons Numbers examples. This will result in a JSON report in `results/depclean/default/commons_numbers_examples-<timestamp>.json`.
 3. Results can be presented using the TEP dashboard by running `ove dashboard <projects...>`, e.g. `ove dashboard depclean`.
 
 ## Docker images
@@ -49,16 +49,89 @@ For example, the DepClean on Apache Commons Numbers example from above can be ch
 
 Once downloaded, this will launch an OVE shell in the container. You can now immediately run
 
-`ove depclean commons_numbers_examples`
+`ove depclean -s commons_numbers_examples`
 
-which will generate output in `/ove/results/depclean/commons_numbers_examples-<timestamp>.json`.
+which will generate output in `/ove/results/depclean/simple/commons_numbers_examples-<timestamp>.json`.
 
 Finally, the dashboard can be started using
 
 `ove dashboard depclean`
 
 and accessed on [localhost:8050](http://localhost:8050/depclean) on the host.
+More information about the dashboard can be found [below](#Dashboard).
+
+
+# Tools
+
+## DepClean
+
+[DepClean](https://github.com/castor-software/depclean) automatically removes dependencies that are included in your Java dependency tree but are not actually used in the project's code.
+
+* **OVE name**: depclean
+* **Invocation**: `ove depclean [-s] <subject>`
+  * `-s`: parse default text output instead of writing JSON directly (used for the example dashboard)
+
+## V.A.C.C.I.N.A.T.E.
+
+[V.A.C.C.I.N.A.T.E.](https://github.com/nilsceberg/vaccinate) is a simple test tool that pretends it does useful static analysis.
+
+* **OVE name**: vaccinate
+* **Invocation**: `ove vaccinate <subject>`
+
+### Adding a new tool
+
+Adding a new tool comprises the following steps:
+
+* Add a Git repository to `revtab`.
+* Add an entry to `projs`.
+* Create build scripts in `projects/<tool>`.
+* Create an invocation script for the tool as `scripts/<tool>`, or on each corpus project to enable the tool for as `projects/<project>/<tool>` if the extra
+  flexibility is required. This script should pipe JSON out into `ove-mkresult <tool> <subject> <tag>`, which will create a result file.
+
+The tool should now be able to be invoked on a project as `ove <tool> <subject>`.
+
+See the [Dashboard](#Dashboard) section for information on how to create a dashboard for the tool.
+
+
+# Corpus
+
+## Apache Commons Numbers
+The [Apache Commons Numbers](https://github.com/apache/commons-numbers) project provides number types and utilities.
+
+**OVE name**: commons_numbers_examples
+
+## Cassandra
+[Cassandra](https://cassandra.apache.org/_/index.html) is a NoSQL distributed database.
+
+**OVE name**: cassandra
+
+
+# Dashboard
+
+The dashboard is the primary way to view results. Project scripts can include a `dash` script using the TEP library Plotly Dash to create dashboard components.
+The following is an excerpt from the V.A.C.C.I.N.A.T.E. dash script:
+
+```python
+subjects = ["cassandra"]
+
+def create_histogram(filename):
+	with open(filename) as results_file:
+		results = json.load(results_file)
+		data = {"characters/line": results["results"]}
+		return px.histogram(data), results["meta"]
+
+
+result_files = [(subject, file) for subject in subjects for file in get_results_files("vaccinate", subject)]
+
+dashboard = Dashboard(title = "V.A.C.C.I.N.A.T.E.")
+
+for (subject, file) in result_files:
+	graph, meta = create_histogram(file)
+	dashboard.add(Graph(graph, title=subject, meta=meta)
+```
+
+The dashboard is early in development and the API subject to change.
+
 
 # Backlog
 See the [Backlog](https://github.com/wasp-sweden/wara-sw-tech-tools/blob/main/BACKLOG.md) file for details.
-
