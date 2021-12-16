@@ -26,9 +26,21 @@ For more information, read the [OVE Tutorial](https://github.com/Ericsson/ove-tu
 
 ## Setting up the workspace
 To set up the workspace run the oneliner:
-  `curl -sSL https://raw.githubusercontent.com/Ericsson/ove/master/setup | bash -s WARA-SW https://github.com/wasp-sweden/wara-sw-tech-tools`
 
-This will create an OVE workspace directory with the name WARA-SW. Follow the setup script by entering the workspace directory and running `source ove`. You can now clone the repositories of the software corpus by running `ove fetch`.
+    curl -sSL https://raw.githubusercontent.com/Ericsson/ove/master/setup | bash -s WARA-SW https://github.com/wasp-sweden/wara-sw-tech-tools
+
+This will create an OVE workspace directory with the name WARA-SW. Follow the setup script by entering the workspace directory and running `source ove`. You can now clone the repositories of the software corpus by running `ove fetch`. Example:
+
+    $ curl -sSL https://raw.githubusercontent.com/Ericsson/ove/master/setup | bash -s WARA-SW https://github.com/wasp-sweden/wara-sw-tech-tools
+    ...
+    $ cd WARA-SW
+    $ source ove
+    OVE f902139 | Ubuntu 20.04 | GNU/Linux
+    $ ove fetch
+    actor-framework     Cloning into '.../WARA-SW/actor-framework'...
+    commons-numbers     Cloning into '.../WARA-SW/commons-numbers'...
+    cassandra           Cloning into '.../WARA-SW/cassandra'...
+    ...
 
 If you have Docker installed, you can launch a pristine Ubuntu environment for building and testing the corpus projects using `ove docker`. Running `ove list-needs` in this container will list OS dependencies you will need to install using `sudo apt install` (or equivalently).
 
@@ -45,17 +57,17 @@ all required dependencies pre-installed and the relevant projects pre-built.
 
 For example, the DepClean on Apache Commons Numbers example from above can be checked out by running:
 
-`docker run --rm -it -p 8050:8050 warasw/tep:depclean`
+    $ docker run --rm -it -p 8050:8050 warasw/tep:depclean
 
 Once downloaded, this will launch an OVE shell in the container. You can now immediately run
 
-`ove depclean -s commons_numbers_examples`
+    $ ove depclean -s commons_numbers_examples
 
 which will generate output in `/ove/results/depclean/simple/commons_numbers_examples-<timestamp>.json`.
 
 Finally, the dashboard can be started using
 
-`ove dashboard depclean`
+    $ ove dashboard depclean
 
 and accessed on [localhost:8050](http://localhost:8050/depclean) on the host.
 More information about the dashboard can be found [below](#Dashboard).
@@ -78,13 +90,17 @@ More information about the dashboard can be found [below](#Dashboard).
 * **OVE name**: vaccinate
 * **Invocation**: `ove vaccinate <subject>`
 
-### Adding a new tool
+## Adding a new tool
 
 Adding a new tool comprises the following steps:
 
-* Add a Git repository to `revtab`.
-* Add an entry to `projs`.
-* Create build scripts in `projects/<tool>`.
+* Add a Git repository to `revtab`. Edit the `revtab` file manually or use `ove add-repo`:
+
+        $ ove add-repo https://github.com/foobar/toolA toolA main
+* Add an entry to `projs`. Edit the `projs` file manually or use `ove add-project`:
+
+        $ ove add-project toolA toolA bootstrap@./autogen.sh configure@./configure build@make
+* Create build scripts in `projects/<tool>`. Skip this step if you already specified the build scripts with `ove add-project`.
 * Create an invocation script for the tool as `scripts/<tool>`, or on each corpus project to enable the tool for as `projects/<project>/<tool>` if the extra
   flexibility is required. This script should pipe JSON out into `ove-mkresult <tool> <subject> <tag>`, which will create a result file.
 
