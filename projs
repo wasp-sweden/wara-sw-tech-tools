@@ -1,5 +1,12 @@
 # Corpus:
 
+git:
+  path:
+    git
+  deps:
+  needs:
+    gettext
+
 actor_framework:
   deps:
     base

@@ -1,6 +1,7 @@
 # name           fetch URL                                           push URL                                            rev
 .ove             https://github.com/Ericsson/ove.git                 https://github.com/Ericsson/ove.git                 master
 # corpus
+git              https://github.com/git/git.git                      https://github.com/git/git.git                      v2.34.1
 actor-framework  https://github.com/actor-framework/actor-framework  https://github.com/actor-framework/actor-framework  0.18.5
 redis            https://github.com/redis/redis                      https://github.com/redis/redis                      6.2.5
 doxygen          https://github.com/doxygen/doxygen                  https://github.com/doxygen/doxygen                  Release_1_9_2
