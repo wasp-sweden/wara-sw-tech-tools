@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+
+$OVE_PROJECT_DIR/scripts/dmce-bin2list | ove-mkresult dmce git

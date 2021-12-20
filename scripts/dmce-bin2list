@@ -1,0 +1,10 @@
+#!/usr/bin/python3
+
+import os, sys
+import numpy as np
+
+user=os.getenv("LOGNAME")
+dfile = "/tmp/" + user + "/dmce/dmcebuffer.bin"
+data = np.fromfile(dfile, dtype=np.int32)
+data = data.tolist()
+print(data)
