@@ -1,9 +1,10 @@
+---
 # Corpus:
-
 git:
+  deps:
+    base
   path:
     git
-  deps:
   needs:
     gettext
 
@@ -20,7 +21,7 @@ actor_framework:
 redis:
   deps:
     base
-  needs: 
+  needs:
     make
     gcc
     pkg-config
@@ -107,6 +108,17 @@ depclean:
     maven
   path:
     depclean
+
+dmce:
+  deps:
+    base
+    clang_tools
+  needs:
+    dpkg
+    python3
+    wget
+  path:
+    dmce
 
 # Misc:
 
