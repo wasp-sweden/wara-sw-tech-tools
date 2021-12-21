@@ -14,7 +14,7 @@ projects = ["git"]
 def create_histogram(filename):
 	with open(filename) as results_file:
 		results = json.load(results_file)
-		data = {"characters/line": results["results"]}
+		data = {"probe hits": results["results"]}
 		return px.histogram(data), results["meta"]
 
 
