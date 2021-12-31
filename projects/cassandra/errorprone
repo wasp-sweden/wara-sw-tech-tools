@@ -5,4 +5,4 @@ ant clean
 
 reportDir=$OVE_BASE_DIR/reports
 mkdir -p $reportDir
-ant errorprone -Duse.jdk11=true | tee /dev/stderr | $OVE_PROJECT_DIR/sarif-converters/errorprone.py > $reportDir/errorprone-cassandra.sarif
+ant errorprone -Duse.jdk11=true | tee /dev/stderr | $OVE_OWEL_DIR/sarif-converters/errorprone.py > $reportDir/errorprone-cassandra.sarif

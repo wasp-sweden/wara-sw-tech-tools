@@ -13,7 +13,7 @@ from dash import dcc
 
 class DashboardApp:
     def __init__(self):
-        self.asset_dir = Path(os.environ["OVE_PROJECT_DIR"]).joinpath("dashboard/assets")
+        self.asset_dir = Path(os.environ["OVE_OWEL_DIR"]).joinpath("dashboard/assets")
         self.figure_dir = self.asset_dir.joinpath("figures")
         self._built = False
         self._dashboards = {}
@@ -61,7 +61,7 @@ app = DashboardApp()
 def load_dashboard(name):
     try:
         G = {}
-        exec(Path(os.environ["OVE_PROJECT_DIR"]).joinpath(f"projects/{name}/dash").open().read(), G)
+        exec(Path(os.environ["OVE_OWEL_DIR"]).joinpath(f"projects/{name}/dash").open().read(), G)
         app.add(name, G["dashboard"])
     except FileNotFoundError:
         print(f"failed to load dashboard {name}")
@@ -81,7 +81,7 @@ def show_dashboard(name):
     else:
         return []
 
-with open(Path(os.environ["OVE_PROJECT_DIR"]).joinpath("projs")) as f:
+with open(Path(os.environ["OVE_OWEL_DIR"]).joinpath("projs")) as f:
     projects = yaml.safe_load(f)
 
 for project in sys.argv:

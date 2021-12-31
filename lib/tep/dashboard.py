@@ -62,7 +62,7 @@ class Image(DashboardObject):
 class Dashboard:
     def __init__(self, title):
         self.title = title
-        self.asset_dir = Path(os.environ["OVE_PROJECT_DIR"]).joinpath("dashboard/assets")
+        self.asset_dir = Path(os.environ["OVE_OWEL_DIR"]).joinpath("dashboard/assets")
         self.figure_dir = self.asset_dir.joinpath("figures")
         self._built = False
         self._objects = []

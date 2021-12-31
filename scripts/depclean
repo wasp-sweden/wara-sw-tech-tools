@@ -45,7 +45,7 @@ fi
 cd ${dir}
 
 function resultInSimple {
-	if ! mvn -e -q se.kth.castor:depclean-maven-plugin:${depclean_version}:depclean | tee /dev/stderr | $OVE_PROJECT_DIR/parsers/depclean/parse.py | ove-mkresult depclean $1 simple; then
+	if ! mvn -e -q se.kth.castor:depclean-maven-plugin:${depclean_version}:depclean | tee /dev/stderr | $OVE_OWEL_DIR/parsers/depclean/parse.py | ove-mkresult depclean $1 simple; then
 		echo "error: depclean failed"
 		exit 1
 	fi
