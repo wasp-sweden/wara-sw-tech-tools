@@ -9,13 +9,13 @@ import sys
 import os
 import json
 
-projects = ["git"]
+projects = ["dmce"]
 
 def create_histogram(filename):
 	with open(filename) as results_file:
 		results = json.load(results_file)
 		data = {"probe hits": results["results"]}
-		return px.histogram(data), results["meta"]
+		return px.bar(data), results["meta"]
 
 
 result_files = [(project, file) for project in projects for file in get_results_files("dmce", project)]
