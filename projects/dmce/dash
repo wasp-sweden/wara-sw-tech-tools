@@ -9,7 +9,7 @@ import sys
 import os
 import json
 
-projects = ["dmce"]
+projects = ["dmce", "vaccinate"]
 
 def create_histogram(filename):
 	with open(filename) as results_file:
