@@ -1,3 +1,9 @@
 #!/usr/bin/bash
 
-$OVE_OWEL_DIR/scripts/dmce-bin2list | ove-mkresult dmce dmce
+target="dmce"
+
+if [ "$1" != "" ]; then
+    target=$1
+fi
+
+$OVE_OWEL_DIR/scripts/dmce-bin2list | ove-mkresult dmce ${target}
