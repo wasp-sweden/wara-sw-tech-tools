@@ -7,6 +7,7 @@ user=os.getenv("LOGNAME")
 dfile = "/tmp/" + user + "/dmce/dmcebuffer.bin"
 data = np.fromfile(dfile, dtype=np.int32)
 data = np.trim_zeros(data)
+data = np.sqrt(data)
 data = data.tolist()
 
 print(data)
