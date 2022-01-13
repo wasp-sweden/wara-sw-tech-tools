@@ -7,6 +7,10 @@ git:
     git
   needs:
     gettext
+  tags:
+    c
+    corpus
+    medium
 
 actor_framework:
   deps:
@@ -17,6 +21,10 @@ actor_framework:
     libssl-dev
   path:
     actor-framework
+  tags:
+    corpus
+    cplusplus
+    medium
 
 redis:
   deps:
@@ -28,6 +36,10 @@ redis:
     tcl
   path:
     redis
+  tags:
+    c
+    corpus
+    medium
 
 doxygen:
   deps:
@@ -38,23 +50,36 @@ doxygen:
     python3
     flex
     bison
-  path: doxygen
+  path:
+    doxygen
+  tags:
+    c
+    cplusplus
+    corpus
+    medium
 
 cassandra:
-  deps:
   needs:
     python2.7
     openjdk-11-jdk
     maven
     ant
-  path: cassandra
+  path:
+    cassandra
+  tags:
+    corpus
+    java
+    medium
 
 commons_numbers_examples:
-  deps:
   needs:
     maven
   path:
     commons-numbers/commons-numbers-examples
+  tags:
+    corpus
+    java
+    medium
 
 # Tools:
 
@@ -68,34 +93,51 @@ llvm:
     ninja-build
   path:
     llvm
+  tags:
+    c
+    cplusplus
+    tool
+    large
 
 spotbugs:
-  deps:
   needs:
     openjdk-11-jdk
   path:
     spotbugs
+  tags:
+    java
+    medium
+    tool
 
 errorprone:
-  deps:
   needs:
     maven
   path:
     errorprone
+  tags:
+    java
+    medium
+    tool
 
 vaccinate:
   deps:
     base
-  needs:
   path:
     vaccinate
+  tags:
+    c
+    small
+    tool
 
 depclean:
-  deps:
   needs:
     maven
   path:
     depclean
+  tags:
+    java
+    medium
+    tool
 
 clang_tools:
   needs_alpine:
@@ -112,6 +154,8 @@ clang_tools:
     clang
   needs_void:
     clang-tools-extra
+  tags:
+    tool
 
 dmce:
   deps:
@@ -123,6 +167,11 @@ dmce:
     wget
   path:
     dmce
+  tags:
+    c
+    cplusplus
+    small
+    tool
 
 # Misc:
 
@@ -139,4 +188,3 @@ base:
   needs_arch:
     base-devel
     pkgconfig
-
