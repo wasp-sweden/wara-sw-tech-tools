@@ -9,8 +9,6 @@ import sys
 import os
 import json
 
-projects = ["dmce", "vaccinate"]
-
 def create_histogram(filename):
 	with open(filename) as results_file:
 		results = json.load(results_file)
@@ -18,7 +16,7 @@ def create_histogram(filename):
 		return px.bar(data), results["meta"]
 
 
-result_files = [(project, file) for project in projects for file in get_results_files("dmce", project)]
+result_files = [(project, file) for project in get_projects() for file in get_results_files("dmce", project)]
 
 dashboard = Dashboard(title = "DMCE")
 
