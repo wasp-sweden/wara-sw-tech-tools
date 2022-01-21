@@ -27,7 +27,7 @@ cd "$OVE_BASE_DIR"
 if [ $CLEAN == 1 ]; then
 		echo "Starting clean environment..."
 		docker rm -f "$NAME" 2> /dev/null
-		$OVE_OWEL_DIR/scripts/docker-image base --no-cache --build-arg UID --build-arg GID || exit 1
+		$OVE_OWEL_DIR/scripts/docker-image base --no-cache --build-arg UID=$(id -u) --build-arg GID=$(id -g) || exit 1
 		docker run -ti --name="$NAME" -v="$PWD:/ove" -p "127.0.0.1:$PORT:8050" warasw/tep:latest
 else
 		echo "Reattaching..."
