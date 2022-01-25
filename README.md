@@ -136,8 +136,8 @@ The [Apache Commons Numbers](https://github.com/apache/commons-numbers) project 
 
 # Dashboard
 
-The dashboard is the primary way to view results. Project scripts can include a `dash` script using the TEP library Plotly Dash to create dashboard components.
-The following is an excerpt from the V.A.C.C.I.N.A.T.E. dash script:
+The dashboard is the primary way to graphically view results. Project scripts can include a `dash` script using the TEP (Tool Exploration Platform) library Plotly Dash to create dashboard components.
+The following is an excerpt from the V.A.C.C.I.N.A.T.E. dash script that can be used as an example.
 
 ```python
 subjects = ["cassandra"]
@@ -158,8 +158,3 @@ for (subject, file) in result_files:
 	dashboard.add(Graph(graph, title=subject, meta=meta)
 ```
 
-The dashboard is early in development and the API subject to change.
-
-
-# Backlog
-See the [Backlog](https://github.com/wasp-sweden/wara-sw-tech-tools/blob/main/BACKLOG.md) file for details.
