@@ -75,6 +75,13 @@ More information about the dashboard can be found [below](#Dashboard).
 
 # Tools
 
+## V.A.C.C.I.N.A.T.E.
+
+[V.A.C.C.I.N.A.T.E.](https://github.com/nilsceberg/vaccinate) is a simple test tool that pretends it does useful static analysis.
+
+* **OVE name**: vaccinate
+* **Invocation**: `ove vaccinate <subject>`
+
 ## DepClean
 
 [DepClean](https://github.com/castor-software/depclean) automatically removes dependencies that are included in your Java dependency tree but are not actually used in the project's code.
@@ -83,12 +90,13 @@ More information about the dashboard can be found [below](#Dashboard).
 * **Invocation**: `ove depclean [-s] <subject>`
   * `-s`: parse default text output instead of writing JSON directly (used for the example dashboard)
 
-## V.A.C.C.I.N.A.T.E.
+## DMCE (Did My Code Execute)
+[DMCE](https://github.com/PatrikAAberg/dmce) is a source code level instrumentation tool for C/C++ that enables dynamic code execution tracking without build tool chain dependencies. Probes c/c++ expressions added between two git revisions. Consists of a bunch of bash and python scripts on top of clang-check and git.
 
-[V.A.C.C.I.N.A.T.E.](https://github.com/nilsceberg/vaccinate) is a simple test tool that pretends it does useful static analysis.
+* **OVE name**: dmce
+* **Invocation**: `ove dmce`
 
-* **OVE name**: vaccinate
-* **Invocation**: `ove vaccinate <subject>`
+The above command will trigger the help text. Please note that dmce can also be run stand-alone from the git or by installing a debian package. Further instructions can be found on the dmce github page following the link above.
 
 ## Adding a new tool
 
