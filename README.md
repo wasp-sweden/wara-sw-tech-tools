@@ -141,11 +141,17 @@ The [Apache Commons Numbers](https://github.com/apache/commons-numbers) project 
 ## Doxygen
 [Doxygen](https://www.doxygen.nl/index.html) is a documentation generator and static analysis tool for software source trees.
 
+**OVE project**: doxygen
+
 ## Git
 [Git](https://git-scm.com/)
 
+**OVE project**: git
+
 ## Redis
 [Redis](https://redis.io/) is an in-memory database that persists on disk.
+
+**OVE project**: redis
 
 # Dashboard
 
