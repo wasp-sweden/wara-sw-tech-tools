@@ -75,6 +75,10 @@ More information about the dashboard can be found [below](#Dashboard).
 
 # Tools
 
+## OVE
+
+[OVE](https://github.com/Ericsson/ove) is gathering git repositories and the knowledge how to build and test them.
+
 ## V.A.C.C.I.N.A.T.E.
 
 [V.A.C.C.I.N.A.T.E.](https://github.com/nilsceberg/vaccinate) is a simple test tool that pretends it does useful static analysis.
