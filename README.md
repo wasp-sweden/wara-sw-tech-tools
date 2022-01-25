@@ -46,7 +46,12 @@ If you have Docker installed, you can launch a pristine Ubuntu environment for b
 
 The corpus can then be used as follows:
 
-1. Run `ove buildme` to compile the entire corpus, or specify a subset of the projects to build (e.g. `ove buildme depclean commons_numbers_examples`).
+1. Run `ove buildme/buildme-parallel` to compile the entire corpus, or specify a subset of the projects to build. Examples:
+
+    $ ove buildme depclean commons_numbers_examples
+    $ ove buildme corpus +small +c
+    $ ove buildme tools +medium +java
+
 2. Tools can now be invoked using `ove <tool> [subject...]`, e.g. `ove depclean -s commons_numbers_examples` to run DepClean on the Apache Commons Numbers examples. This will result in a JSON report in `results/depclean/default/commons_numbers_examples-<timestamp>.json`.
 3. Results can be presented using the TEP dashboard by running `ove dashboard <projects...>`, e.g. `ove dashboard depclean`.
 
@@ -133,6 +138,14 @@ The [Apache Commons Numbers](https://github.com/apache/commons-numbers) project 
 
 **OVE project**: cassandra
 
+## Doxygen
+[Doxygen](https://www.doxygen.nl/index.html) is a documentation generator and static analysis tool for software source trees.
+
+## Git
+[Git](https://git-scm.com/)
+
+## Redis
+[Redis](https://redis.io/) is an in-memory database that persists on disk.
 
 # Dashboard
 
