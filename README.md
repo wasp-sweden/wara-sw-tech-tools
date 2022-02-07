@@ -1,6 +1,6 @@
-# WARA-SW: Software Corpus and Offline Tool Evaluation Platform
+# WARA-SW: Software Corpus and Evaluation Platform
 
-Aim: Make it easy to evaluate (offline) software tools on existing
+Aim: Make it easy to evaluate (mainly non-interactive) software tools on existing
 Open Source software, with a foucs on software used in the Swedish
 industry.
 
