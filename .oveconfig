@@ -1,4 +1,4 @@
 PYTHONPATH  $OVE_OWEL_DIR/lib
-RESULT_DIR	$OVE_BASE_DIR/results
+RESULT_DIR  $OVE_BASE_DIR/results
 
 # make sure this ends with a newline
