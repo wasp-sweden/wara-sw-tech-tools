@@ -15,3 +15,6 @@ vaccinate        https://github.com/nilsceberg/vaccinate             https://git
 depclean         https://github.com/castor-software/depclean         https://github.com/castor-software/depclean         2.0.0
 dmce             https://github.com/PatrikAAberg/dmce.git            https://github.com/PatrikAAberg/dmce.git            master
 dmce-examples    https://github.com/PatrikAAberg/dmce-examples.git   https://github.com/PatrikAAberg/dmce-examples.git   main
+
+# infrastructure
+wara-sw-tech-tools-dashboard	https://github.com/wasp-sweden/wara-sw-tech-tools-dashboard	https://github.com/wasp-sweden/wara-sw-tech-tools-dashboard	main

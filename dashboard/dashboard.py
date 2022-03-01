@@ -6,9 +6,12 @@ import sys
 import shutil
 from pathlib import Path
 
+import plotly.express as px
 import dash
 from dash import html
 from dash import dcc
+
+import tep_dashboard as tdc
 
 
 class DashboardApp:
@@ -37,19 +40,15 @@ class DashboardApp:
         else:
             return None
 
+    def dashboard_info(self):
+        return dict([(key, dash.title) for (key, dash) in self._dashboards.items()])
+
     def serve(self):
         assert(self._built)
 
         self._app.layout = html.Div(children=[
             dcc.Location(id="url", refresh=False),
-            html.H1(["WARA-SW TEP Dashboard"]),
-            html.Main([
-                html.Div([
-                    html.A(dashboard.title, href="/" + name),
-                ])
-                for (name, dashboard) in self._dashboards.items()
-            ]),
-            html.Div([], id="dashboard-area")
+            html.Div([], id="dashboard-area"),
         ])
         self._app.run_server(debug=True, host="0.0.0.0")
 
@@ -66,20 +65,31 @@ def load_dashboard(name):
     except FileNotFoundError:
         print(f"failed to load dashboard {name}")
 
-#load_dashboard("vaccinate")
-#load_dashboard("depclean")
-
 @app._app.callback(
     dash.dependencies.Output("dashboard-area", "children"),
     dash.dependencies.Input("url", "pathname")
     )
-def show_dashboard(name):
-    print(name)
-    dash = app.get_dashboard(name[1:])
+def show_dashboard(path):
+    key = path[1:]
+    print("Showing dashboard: " + key)
+
+    dash = app.get_dashboard(key)
+    print(app.dashboard_info())
+
     if dash:
-        return dash.render()
+        return tdc.Dashboard(
+            id="dashboard",
+            selected=key,
+            dashboards=app.dashboard_info(),
+            children=dash.render()
+        ),
     else:
-        return []
+        return tdc.Dashboard(
+            id="dashboard",
+            selected="",
+            dashboards=app.dashboard_info(),
+            children=[]
+        )
 
 with open(Path(os.environ["OVE_OWEL_DIR"]).joinpath("projs")) as f:
     projects = yaml.safe_load(f)

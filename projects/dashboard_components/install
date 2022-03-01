@@ -1,0 +1,4 @@
+#!/bin/bash
+
+pip install dist/tep_dashboard-0.0.1.tar.gz
+
