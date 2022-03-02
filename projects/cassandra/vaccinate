@@ -1,3 +1,0 @@
-#!/bin/bash
-
-vaccinate src/java/org/apache/cassandra/**/*.java | grep mean | sed -E 's/^[^:]+: (.+)/\1,/g' | tr -d '\n' | sed -E 's/^(.*),$/[\1]/g' | ove-mkresult vaccinate cassandra
