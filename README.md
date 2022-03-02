@@ -159,21 +159,18 @@ The dashboard is the primary way to graphically view results. Project scripts ca
 The following is an excerpt from the V.A.C.C.I.N.A.T.E. dash script that can be used as an example.
 
 ```python
-subjects = ["cassandra"]
-
 def create_histogram(filename):
 	with open(filename) as results_file:
 		results = json.load(results_file)
 		data = {"characters/line": results["results"]}
 		return px.histogram(data), results["meta"]
 
-
-result_files = [(subject, file) for subject in subjects for file in get_results_files("vaccinate", subject)]
+result_files = [(project, file) for project in get_projects() for file in get_results_files("vaccinate", project)]
 
 dashboard = Dashboard(title = "V.A.C.C.I.N.A.T.E.")
 
-for (subject, file) in result_files:
-	graph, meta = create_histogram(file)
-	dashboard.add(Graph(graph, title=subject, meta=meta)
+for (project, file) in result_files:
+	figure, meta = create_histogram(file)
+	dashboard.add(tdc.Widget(title=f"{project} (mean lines per file)", meta=meta, children=dcc.Graph(figure = figure)))
 ```
 

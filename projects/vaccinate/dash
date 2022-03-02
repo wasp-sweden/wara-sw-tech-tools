@@ -2,15 +2,11 @@
 
 from tep.dashboard import Dashboard
 from tep.results import *
-import plotly.express as px
-from pathlib import Path
-from dash import dcc
-
 import tep_dashboard as tdc
 
-import sys
-import os
 import json
+import plotly.express as px
+from dash import dcc
 
 def create_histogram(filename):
 	with open(filename) as results_file:
