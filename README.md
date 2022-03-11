@@ -150,7 +150,7 @@ Adding a new tool comprises the following steps:
         $ ove add-project toolA toolA bootstrap@./autogen.sh configure@./configure build@make
 * Create build scripts in `projects/<tool>`. Skip this step if you already specified the build scripts with `ove add-project`.
 * Create an invocation script for the tool as `scripts/<tool>`, or on each corpus project to enable the tool for as `projects/<project>/<tool>` if the extra
-  flexibility is required. This script should pipe JSON out into `ove-mkresult <tool> <subject> <tag>`, which will create a result file.
+  flexibility is required. This script should pipe JSON out into `ove-mkresult <tool> <subject> <tag>`, which will create a result file (see [Result Format](#result-format) for more information about result files and tags). 
 
 The tool should now be able to be invoked on a project as `ove <tool> <subject>`.
 
@@ -229,3 +229,11 @@ for (subject, file) in result_files:
 		))
 ```
 
+## Result Format
+The result files are in JSON and will contain two keys, `meta` and `results`. The value of `meta` is information about the system the result file has been generated on. `results` is the actual output of the tool.
+
+A specific result file can be found on this path,
+
+``results/<tool>/<tag>/<subject>-<timestamp>.json``
+
+`tag` can be used for distinguishing between different modes of output for a tool. Default tag is `default`.
