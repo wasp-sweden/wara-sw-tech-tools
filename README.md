@@ -18,7 +18,6 @@ WASP [Research Arena for Software
 ## Requirements
 - Mainstream Linux distribution
 - `bash`
-- The dashboard requires Python 3 and Plotly Dash (see below).
 - Most packages require compilers or run-time systems; OVE (see below) will report system dependencies as needed.
 
 This repository uses [OVE](https://github.com/Ericsson/ove).
@@ -29,7 +28,11 @@ To set up the workspace run the oneliner:
 
     curl -sSL https://raw.githubusercontent.com/Ericsson/ove/master/setup | bash -s WARA-SW https://github.com/wasp-sweden/wara-sw-tech-tools
 
-This will create an OVE workspace directory with the name WARA-SW. Follow the setup script by entering the workspace directory and running `source ove`. You can now clone the repositories of the software corpus by running `ove fetch`. Example:
+This will create an OVE workspace directory with the name WARA-SW. Follow the setup script by entering the workspace directory and running `source ove`. You can now clone the repositories of the software corpus by running `ove fetch`. 
+
+Fetching everything might get you more than you bargained for; specific repositories can be specified as e.g. `ove fetch cassandra`.
+
+Example:
 
     $ curl -sSL https://raw.githubusercontent.com/Ericsson/ove/master/setup | bash -s WARA-SW https://github.com/wasp-sweden/wara-sw-tech-tools
     ...
@@ -55,6 +58,34 @@ The corpus can then be used as follows:
 2. Tools can now be invoked using `ove <tool> [subject...]`, e.g. `ove depclean -s commons_numbers_examples` to run DepClean on the Apache Commons Numbers examples. This will result in a JSON report in `results/depclean/default/commons_numbers_examples-<timestamp>.json`.
 3. Results can be presented using the TEP dashboard by running `ove dashboard <projects...>`, e.g. `ove dashboard depclean`.
 
+## Example usage
+
+Assuming you are in an OVE environment as setup above, the following is a complete example of how to run DepClean on the Apache Commons Numbers examples.
+
+1. Fetch all required repositories, including those required for the dashboard:
+
+        ove fetch depclean commons-numbers wara-sw-tech-tools-dashboard
+
+2. Build the projects we're interested in from these repositories:
+
+        ove buildme depclean commons_numbers_examples dashboard_components
+    
+   If OVE complains about missing system, install them as needed and try again.
+
+3. We are now ready to invoke DepClean on the Apache Commons Numbers examples and get some output:
+
+        ove depclean commons_numbers_examples
+    
+   This should print the name of a result file containing the output.
+
+4. DepClean has a `projects/depclean/dash` Python script that defines a dashboard which 
+   simply shows one graph for each result file it finds (see the Dashboard section
+   below for more information). Start the dashboard with DepClean like so:
+
+        ove dashboard depclean
+
+   The dashboard can now be accessed in a browser on [localhost:8050](http://localhost:8050/depclean).
+
 ## Docker images
 There are Docker images with batteries included that can be used to
 quickly get up and running if you just want to check a specific project out. These have
@@ -66,11 +97,11 @@ For example, the DepClean on Apache Commons Numbers example from above can be ch
 
 Once downloaded, this will launch an OVE shell in the container. You can now immediately run
 
-    $ ove depclean -s commons_numbers_examples
+    $ ove depclean commons_numbers_examples
 
-which will generate output in `/ove/results/depclean/simple/commons_numbers_examples-<timestamp>.json`.
+which will generate output in `/ove/results/depclean/default/commons_numbers_examples-<timestamp>.json`.
 
-Finally, the dashboard can be started using
+Finally, the dashboard can be started using (**WIP**: currently the images do not include the dashboard)
 
     $ ove dashboard depclean
 
@@ -155,22 +186,46 @@ The [Apache Commons Numbers](https://github.com/apache/commons-numbers) project 
 
 # Dashboard
 
-The dashboard is the primary way to graphically view results. Project scripts can include a `dash` script using the TEP (Tool Exploration Platform) library Plotly Dash to create dashboard components.
-The following is an excerpt from the V.A.C.C.I.N.A.T.E. dash script that can be used as an example.
+The dashboard is the primary way to graphically view results. Project scripts can include a `dash` script that uses the TEP (Tool Evaluation Platform) dashboard library and ][Plotly Dash](https://plotly.com/dash/) to define dashboard contents.
+
+Currently, the dashboard components need to be built separately (perhaps we can find a nicer way for packaging this). Do this by fetching the repository `wara-sw-tech-tools-dashboard` and building the components using
+
+    ove buildme dashboard_components
+
+Running `ove dashboard <projects...>` will start the dashboard server and include the dashboards for the specified projects.
+
+The following is the V.A.C.C.I.N.A.T.E. dash script that can be used as an example.
 
 ```python
+# Naming is a bit messy and subject to change...
+from tep.dashboard import Dashboard
+from tep.results import *
+import tep_dashboard as tdc
+
+import json
+import plotly.express as px
+from dash import dcc
+
+# Read a file and create a simple histogram using Plotly Express
+# (which is a common Python graphing library, independent of TEP).
 def create_histogram(filename):
 	with open(filename) as results_file:
 		results = json.load(results_file)
 		data = {"characters/line": results["results"]}
 		return px.histogram(data), results["meta"]
 
-result_files = [(project, file) for project in get_projects() for file in get_results_files("vaccinate", project)]
+# Query subject projects and result files for each subject
+result_files = [(subject, file) for subject in get_projects() for file in get_results_files("vaccinate", subject)]
 
 dashboard = Dashboard(title = "V.A.C.C.I.N.A.T.E.")
 
-for (project, file) in result_files:
+# Wrap each histogram in a Widget component and add to the dashboard
+for (subject, file) in result_files:
 	figure, meta = create_histogram(file)
-	dashboard.add(tdc.Widget(title=f"{project} (mean lines per file)", meta=meta, children=dcc.Graph(figure = figure)))
+	dashboard.add(tdc.Widget(
+		title=f"{subject} (mean lines per file)",
+		meta=meta,
+		children=dcc.Graph(figure = figure)
+		))
 ```
 
