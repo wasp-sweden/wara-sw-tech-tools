@@ -28,7 +28,7 @@ To set up the workspace run the oneliner:
 
     curl -sSL https://raw.githubusercontent.com/Ericsson/ove/master/setup | bash -s WARA-SW https://github.com/wasp-sweden/wara-sw-tech-tools
 
-This will create an OVE workspace directory with the name WARA-SW. Follow the setup script by entering the workspace directory and running `source ove`. You can now clone the repositories of the software corpus by running `ove fetch`. 
+This will create an OVE workspace directory with the name WARA-SW. Follow the setup script by entering the workspace directory and running `source ove`. You can now clone the repositories of the software corpus by running `ove fetch`.
 
 Fetching everything might get you more than you bargained for; specific repositories can be specified as e.g. `ove fetch cassandra`.
 
@@ -69,16 +69,16 @@ Assuming you are in an OVE environment as setup above, the following is a comple
 2. Build the projects we're interested in from these repositories:
 
         ove buildme depclean commons_numbers_examples dashboard_components
-    
+
    If OVE complains about missing system, install them as needed and try again.
 
 3. We are now ready to invoke DepClean on the Apache Commons Numbers examples and get some output:
 
         ove depclean commons_numbers_examples
-    
+
    This should print the name of a result file containing the output.
 
-4. DepClean has a `projects/depclean/dash` Python script that defines a dashboard which 
+4. DepClean has a `projects/depclean/dash` Python script that defines a dashboard which
    simply shows one graph for each result file it finds (see the Dashboard section
    below for more information). Start the dashboard with DepClean like so:
 
@@ -150,7 +150,7 @@ Adding a new tool comprises the following steps:
         $ ove add-project toolA toolA bootstrap@./autogen.sh configure@./configure build@make
 * Create build scripts in `projects/<tool>`. Skip this step if you already specified the build scripts with `ove add-project`.
 * Create an invocation script for the tool as `scripts/<tool>`, or on each corpus project to enable the tool for as `projects/<project>/<tool>` if the extra
-  flexibility is required. This script should pipe JSON out into `ove-mkresult <tool> <subject> <tag>`, which will create a result file (see [Result Format](#result-format) for more information about result files and tags). 
+  flexibility is required. This script should pipe JSON out into `ove-mkresult <tool> <subject> <tag>`, which will create a result file (see [Result Format](#result-format) for more information about result files and tags).
 
 The tool should now be able to be invoked on a project as `ove <tool> <subject>`.
 
@@ -237,3 +237,30 @@ A specific result file can be found on this path,
 ``results/<tool>/<tag>/<subject>-<timestamp>.json``
 
 `tag` can be used for distinguishing between different modes of output for a tool. Default tag is `default`.
+
+## FAQ
+    Q: I'm behind a company proxy 'proxy.company.com:8080' and the build hangs for certain projects. What to do?
+    A: It depends on what project. Here's a list of proxy-tricks that you might want to try:
+
+    $ export https_proxy="proxy.company.com:8080"
+
+    # ant
+    $ export ANT_OPTS="-Dhttps.proxyHost=proxy.company.com -Dhttp.proxyPort=8080"
+
+    # npm
+    $ npm config set proxy http://proxy.company.com:8080
+
+    # gradle
+    $ echo "systemProp.https.proxyHost=proxy.company.com" >> $HOME/.gradle/gradle.properties
+    $ echo "systemProp.https.proxyPort=8080" >> $HOME/.gradle/gradle.properties
+
+    # maven
+    $ cat $HOME/.m2/settings.xml
+    <proxies>
+       <proxy>
+         <active>true</active>
+         <protocol>http</protocol>
+         <host>proxy.company.com</host>
+         <port>8080</port>
+       </proxy>
+    </proxies>
