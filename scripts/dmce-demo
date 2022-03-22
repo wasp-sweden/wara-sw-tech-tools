@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# build, install and setup DMCE
+ove buildme dmce
+ove dmce set-profile coverage
+
+# make sure we have the vaccinate repo
+ove fetch vaccinate
+
+# instrument vaccinate with some DMCE probes
+ove dmce launch -a -- vaccinate
+
+# build vaccinate with instrumentation
+ove buildme vaccinate
+
+# run vaccinate on self
+ove vaccinate vaccinate
+
+# create dashboard results
+ove dmce-histogram vaccinate
+
+# start web server
+ove dashboard dmce
