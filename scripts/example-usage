@@ -5,17 +5,5 @@ export OVE_LOCAL_ECHO=1
 ove fetch depclean commons-numbers wara-sw-tech-tools-dashboard
 ove buildme depclean commons_numbers_examples dashboard_components
 ove depclean commons_numbers_examples
-ove dashboard depclean &
-p=$!
-if command -v firefox > /dev/null; then
-	while true; do
-		if nc -w 1 -z localhost 8050; then
-			break
-		fi
-		sleep 0.1
-	done
-	firefox localhost:8050 &
-else
-	echo "NOTE: The dashboard can (in a few seconds) be accessed in a browser on localhost:8050"
-fi
-wait $p
+echo "NOTE: The dashboard can (in a few seconds) be accessed in a browser on localhost:8050"
+ove dashboard depclean
