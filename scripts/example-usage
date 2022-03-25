@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+export OVE_LOCAL_ECHO=1
+
+ove fetch depclean commons-numbers wara-sw-tech-tools-dashboard
+ove buildme depclean commons_numbers_examples dashboard_components
+ove depclean commons_numbers_examples
+echo "NOTE: The dashboard can (in a few seconds) be accessed in a browser on localhost:8050"
+ove dashboard depclean

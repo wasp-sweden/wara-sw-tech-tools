@@ -1,7 +1,28 @@
 #!/bin/bash
 
-dir=$(ove-proj2path $1)
-files=$(find $dir -iregex '.*\.\(java\|c\|cc\|cpp\)')
+if ! command -v vaccinate > /dev/null; then
+	echo "error: vaccinate not found. ove buildme vaccinate"
+	exit 1
+elif [ ! $# -eq 1 ]; then
+	echo "usage: vaccinate <OVE project>"
+	echo
+	echo "OVE projects: $OVE_PROJECT_LIST"
+	exit 1
+elif ! dir=$(ove-proj2path $1); then
+	echo "error: could not get project path for project '$1'"
+	exit 1
+elif [ "x$dir" = "x" ]; then
+	echo "error: empty project path for project '$1'"
+	exit 1
+elif [ ! -d "$dir" ]; then
+	echo "error: '$dir' is not a directory, ove fetch?"
+	exit 1
+elif ! files=$(find $dir -iregex '.*\.\(java\|c\|cc\|cpp\)'); then
+	echo "error: find failed"
+	exit 1
+elif [ "x$files" = "x" ]; then
+	echo "error: no files found for project '$1'"
+	exit 1
+fi
 
 vaccinate $files | grep mean | sed -E 's/^[^:]+: (.+)/\1,/g' | tr -d '\n' | sed -E 's/^(.*),$/[\1]/g' | ove-mkresult vaccinate $1
-

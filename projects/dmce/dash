@@ -1,28 +1,32 @@
 #!/usr/bin/env python3
 
-from tep.dashboard import Dashboard, Image, Component, Graph
+# Naming is a bit messy and subject to change...
+from tep.dashboard import Dashboard
 from tep.results import *
-import plotly.express as px
-from pathlib import Path
+import tep_dashboard as tdc
 
-import sys
-import os
 import json
+import plotly.express as px
+from dash import dcc
 
+# Read a file and create a simple histogram using Plotly Express
+# (which is a common Python graphing library, independent of TEP).
 def create_histogram(filename):
 	with open(filename) as results_file:
 		results = json.load(results_file)
 		data = {"probe hits": results["results"]}
 		return px.bar(data), results["meta"]
 
-
+# Query subject projects and result files for each subject
 result_files = [(project, file) for project in get_projects() for file in get_results_files("dmce", project)]
 
 dashboard = Dashboard(title = "DMCE")
 
-for (project, file) in result_files:
-	graph, meta = create_histogram(file)
-	dashboard.add(Graph(graph, title=project, meta=meta))
-
-if __name__ == "__main__":
-	dashboard.build().serve()
+# Wrap each histogram in a Widget component and add to the dashboard
+for (subject, file) in result_files:
+	figure, meta = create_histogram(file)
+	dashboard.add(tdc.Widget(
+		title=f"{subject} (DMCE)",
+		meta=meta,
+		children=dcc.Graph(figure = figure)
+		))
