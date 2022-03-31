@@ -21,8 +21,10 @@
      - [] repo directory structure
      - [] sort out tags
 - [] establish pattern for creating invocation scripts for tools on corpus projects
+     - [] idiomatic way to store corpus project information such as classpaths for use by scripts/tools
 - [] discuss what formats to use for different kinds of tools (see above)
 - [] prestudy for dynamic tools in next Milestone
+- [] dashboard result browser
 
 ## Tooling:
 - Benchmarking Best Practices tool

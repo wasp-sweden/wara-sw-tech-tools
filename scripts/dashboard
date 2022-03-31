@@ -1,4 +1,16 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-python3 $OVE_OWEL_DIR/dashboard/dashboard.py $@
+if [ ! -d "$OVE_BASE_DIR/results/" ]; then
+	echo "error: no results found, run some tools?"
+	exit 1
+elif [ $# -eq 0 ]; then
+	r=$(find "$OVE_BASE_DIR/results/" -maxdepth 1 -mindepth 1 -exec basename {} \;)
+	if [ "x$r" = "x" ]; then
+		echo "error: no results found, run some tools?"
+		exit 1
+	fi
+else
+	r="$*"
+fi
 
+python3 $OVE_OWEL_DIR/dashboard/dashboard.py $r
