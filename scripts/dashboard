@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-if [ ! -d "$RESULT_DIR/" ]; then
+if [ ! -d "${RESULT_DIR:?}" ]; then
 	echo "error: no results found, run some tools?"
 	exit 1
 elif [ $# -eq 0 ]; then
-	r=$(find "$RESULT_DIR/" -maxdepth 1 -mindepth 1 -exec basename {} \;)
+	r=$(find "$RESULT_DIR" -maxdepth 1 -mindepth 1 -type d -exec basename {} \;)
 	if [ "x$r" = "x" ]; then
 		echo "error: no results found, run some tools?"
 		exit 1
@@ -13,4 +13,4 @@ else
 	r="$*"
 fi
 
-python3 $OVE_OWEL_DIR/dashboard/dashboard.py $r
+python3 ${OVE_OWEL_DIR:?}/dashboard/dashboard.py $r
