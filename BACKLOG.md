@@ -13,8 +13,8 @@
      + [N] metadata
      + [N] handle different formats in some unified way (SARIF is nice but probably doesn't work for everything)
            comment: currently just "unified" by wrapping in a JSON object with metadata
-- [MN] package + description: how to build a demonstrator for your tool (consider container image?)
-- [MN] get a dashboard instance up on wara-sw.se
++ [MN] package + description: how to build a demonstrator for your tool (consider container image?)
++ [MN] get a dashboard instance up on wara-sw.se
 
 ## Milestone Y: scale to breadth and fix all bugs that are in the way (more C/C++ corpus projects and tools)
 - [] figure out how to maintain some kind of separation between tools and corpus
