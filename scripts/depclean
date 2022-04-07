@@ -53,7 +53,14 @@ function resultInSimple {
 
 function resultInJSON {
 	mvn -e -q se.kth.castor:depclean-maven-plugin:${depclean_version}:depclean -DcreateResultJson=true
-	ove-mkresult depclean $1 < examples-jmh/depclean-results.json
+	
+	# Aggregates all results in files called depclean-results.json
+	result_files=$(find . -name "depclean-results.json")
+	if [ "$result_files" != "" ]; then
+		ove-mkresult depclean $1 default $result_files
+	else
+		echo "No output files found."
+	fi
 }
 
 case ${output} in

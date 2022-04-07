@@ -3,6 +3,7 @@ import os
 import datetime
 import subprocess
 import re
+import json
 
 def get_results_files(tool, project, tag="default"):
 	"""Returns a list of all result files for specific tool, project and tag tuple.
@@ -45,3 +46,9 @@ def create_results(meta, results):
 		"meta": meta,
 		"results": results,
 	}
+
+def save_results(results):
+	path = get_result_path(results["meta"])
+	with open(path, "w") as f:
+		json.dump(results, f)
+	return path

@@ -192,14 +192,40 @@ DepClean is partially funded by the [Wallenberg Autonomous Systems and Software 
 	""", style={ "padding": "0px 24px", "overflowY": "auto" }, dangerously_allow_html=True )
 ))
 
+def get_children(artifact):
+  children = artifact["children"]
+  children_dict = {}
+  children_dict.update(dict([(child["artifactId"], child) for child in children]))
+  for child in children:
+    children_dict.update(get_children(child))
+  return children_dict
+
 for (project, file) in result_files:
-	with open(file) as results_file:
-		results = json.load(results_file)
-		dashboard.add(tdc.Widget(
-			title=f"Project: {project}",
-			meta=results["meta"],
-			children=tdc.DepcleanGraph(data=results["results"])
-		))
+  with open(file) as results_file:
+    results = json.load(results_file)
+
+    # For some arbitrary result, build an artifact size pie chart
+    result = list(results["results"].values())[0]
+
+    pie = px.pie(get_children(result).values(), values = "size", names = "artifactId")
+    pie.update_traces(textposition='inside', textinfo='percent+label')
+
+    dashboard.add(tdc.Widget(
+      title=f"{project}: dependency sizes",
+      meta=results["meta"],
+      children=dcc.Graph(
+        figure=pie
+      )
+    ))
+
+    # Then visualize each result as a depclean graph
+    for artifact_path, artifact in results["results"].items():
+      artifact_id = artifact_path[2:-len("/depclean-results.json")]
+      dashboard.add(tdc.Widget(
+        title=f"{project}/{artifact_id}",
+        meta=results["meta"],
+        children=tdc.DepcleanGraph(data=artifact)
+      ))
 
 if __name__ == "__main__":
 	dashboard.build().serve()

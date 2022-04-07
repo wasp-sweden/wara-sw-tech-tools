@@ -4,11 +4,14 @@ import json
 import sys
 from tep import results
 
-print(sys.argv)
+def load_output(path):
+    with open(path, "r") as f:
+        return json.load(f)
 
 if len(sys.argv) < 3:
-    print("args error")
-    #raise "TODO: print usage"
+    print("Usage:")
+    print(f"\t{sys.argv[0]} <project> <tool> [ <tag> [ output files ... ] ]")
+    sys.exit(1)
 
 project = sys.argv[1]
 tool = sys.argv[2]
@@ -18,12 +21,15 @@ if len(sys.argv) > 3:
     tag = sys.argv[3]
 
 meta = results.create_metadata(project, tool, tag)
-path = results.get_result_path(meta)
 
-output = json.load(sys.stdin)
+output_files = sys.argv[4:]
+if len(output_files) == 0:
+    output = json.load(sys.stdin)
+else:
+    output = dict([(path, load_output(path)) for path in output_files])
 
-with open(path, "w") as f:
-    json.dump(results.create_results(meta, output), f)
-    print()
-    print(f"Results saved to: {path}")
-    print()
+path = results.save_results(results.create_results(meta, output))
+
+print()
+print(f"Results saved to: {path}")
+print()
