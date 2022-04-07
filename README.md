@@ -156,6 +156,21 @@ The tool should now be able to be invoked on a project as `ove <tool> <subject>`
 
 See the [Dashboard](#Dashboard) section for information on how to create a dashboard for the tool.
 
+### Creating a Docker image
+
+If you want to create a Docker image for demonstrating your tool that can be run out-of-the-box,
+create a `docker/<tool>/Dockerfile` based on `warasw/tep` that installs dependencies and runs the build process for the tool.
+For example, the dockerfile for DepClean contains the following:
+
+    FROM warasw/tep:latest
+    RUN bash -ic 'ove fetch depclean commons-numbers'
+    RUN sudo apt-get -y install maven openjdk-11-jdk
+    RUN bash -ic 'ove buildme depclean commons_numbers_examples'
+
+The image `warasw/tep:<tool>` can then be built using the `docker-image` helper script like so:
+
+    ove docker-image <tool>
+
 
 # Corpus
 
