@@ -5,3 +5,4 @@ dmce-docker-simplecrash	        0		    0	    wara-sw-tech-tools/t	            ".
 dmce-docker-patchcov	        0		    0	    wara-sw-tech-tools/t	            "./dmce-docker-patchcov"
 dmce-docker-simple	            0		    0	    wara-sw-tech-tools/t	            "./dmce-docker-simple"
 dmce-docker-threads	            0		    0	    wara-sw-tech-tools/t	            "./dmce-docker-threads"
+betty-example                   0           0       betty                               "java -jar Betty_v.3.3.jar -f wta_examples/wta_b.rtg -N 1000"

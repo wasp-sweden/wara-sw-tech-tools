@@ -81,6 +81,16 @@ commons_numbers_examples:
     java
     medium
 
+betty:
+  needs:
+    openjdk-11-jdk
+  path:
+    betty
+  tags:
+    corpus
+    java
+    small
+
 # Tools:
 
 llvm:

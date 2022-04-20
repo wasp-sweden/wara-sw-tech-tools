@@ -7,6 +7,8 @@ redis            https://github.com/redis/redis                      https://git
 doxygen          https://github.com/doxygen/doxygen                  https://github.com/doxygen/doxygen                  Release_1_9_2
 cassandra        https://gitbox.apache.org/repos/asf/cassandra.git   https://gitbox.apache.org/repos/asf/cassandra.git   cassandra-4.0.1
 commons-numbers  https://github.com/apache/commons-numbers           https://github.com/apache/commons-numbers           rel/commons-numbers-1.0
+betty            https://github.com/tm11ajn/betty                    https://github.com/tm11ajn/betty                    080405598662397418b9f5f045b85391c7a0a7cb
+
 # tools
 llvm             https://github.com/llvm/llvm-project                https://github.com/llvm/llvm-project                llvmorg-12.0.1
 spotbugs         https://github.com/spotbugs/spotbugs                https://github.com/spotbugs/spotbugs                4.4.1
