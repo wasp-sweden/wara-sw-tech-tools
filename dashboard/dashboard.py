@@ -57,11 +57,13 @@ class DashboardApp:
 
 app = DashboardApp()
 
-def load_dashboard(name):
+def load_dashboard(name, path=None):
+    if path == None:
+        path = name
     try:
         G = {}
         exec(Path(os.environ["OVE_OWEL_DIR"]).joinpath(f"projects/{name}/dash").open().read(), G)
-        app.add(name, G["dashboard"])
+        app.add(path, G["dashboard"])
     except FileNotFoundError:
         print(f"failed to load dashboard {name}")
 
@@ -71,6 +73,10 @@ def load_dashboard(name):
     )
 def show_dashboard(path):
     key = path[1:]
+
+    if key == "":
+        key = "home"
+
     print("Showing dashboard: " + key)
 
     dash = app.get_dashboard(key)
@@ -94,6 +100,7 @@ def show_dashboard(path):
 with open(Path(os.environ["OVE_OWEL_DIR"]).joinpath("projs")) as f:
     projects = yaml.safe_load(f)
 
+load_dashboard("dashboard_components", "home")
 for project in sys.argv:
     if project in projects:
         load_dashboard(project)

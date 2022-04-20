@@ -1,0 +1,29 @@
+#!/usr/bin/env python3
+
+from tep.dashboard import Dashboard
+from tep.results import *
+
+import plotly.express as px
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
+from dash import html
+from dash import dcc
+from pathlib import Path
+
+import tep_dashboard as tdc
+
+dashboard = Dashboard(title = "Home")
+dashboard.add(tdc.Widget(
+	title="Welcome",
+	meta={},
+	children=dcc.Markdown("""
+# WARA-SW Dashboard
+
+Welcome to the dashboard for the WASP Research Arena for Software [Corpus and Evaluation Platform](https://github.com/wasp-sweden/wara-sw-tech-tools)!
+Select a dashboard from the menu in top left corner to view it.
+	""", style={ "padding": "0px 24px", "overflowY": "auto" }, dangerously_allow_html=True )
+))
+
+if __name__ == "__main__":
+	dashboard.build().serve()
+
