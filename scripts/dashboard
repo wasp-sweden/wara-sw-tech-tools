@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+cd $OVE_BASE_DIR
+
 if [ ! -d "${RESULT_DIR:?}" ]; then
 	echo "error: no results found, run some tools?"
 	exit 1
