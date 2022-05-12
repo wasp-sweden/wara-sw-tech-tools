@@ -11,7 +11,7 @@ betty            https://github.com/tm11ajn/betty                    https://git
 
 # tools
 llvm             https://github.com/llvm/llvm-project                https://github.com/llvm/llvm-project                llvmorg-12.0.1
-spotbugs         https://github.com/spotbugs/spotbugs                https://github.com/spotbugs/spotbugs                4.4.1
+spotbugs         https://github.com/spotbugs/spotbugs                https://github.com/spotbugs/spotbugs                4.7.0
 errorprone       https://github.com/google/error-prone               https://github.com/google/error-prone               v2.9.0
 vaccinate        https://github.com/nilsceberg/vaccinate             https://github.com/nilsceberg/vaccinate             main
 depclean         https://github.com/castor-software/depclean         https://github.com/castor-software/depclean         2.0.0
