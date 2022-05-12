@@ -15,4 +15,4 @@ else
 	r="$*"
 fi
 
-python3 ${OVE_OWEL_DIR:?}/dashboard/dashboard.py $r
+python3 ${OVE_OWEL_DIR:?}/dashboard/app.py $r
