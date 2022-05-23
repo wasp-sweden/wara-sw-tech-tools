@@ -260,10 +260,11 @@ A specific result file can be found on this path,
     $ export https_proxy="proxy.company.com:8080"
 
     # ant
-    $ export ANT_OPTS="-Dhttps.proxyHost=proxy.company.com -Dhttp.proxyPort=8080"
+    $ export ANT_OPTS="-Dhttps.proxyHost=proxy.company.com -Dhttps.proxyPort=8080 -Dhttp.proxyHost=proxy.company.com -Dhttp.proxyPort=8080"
 
     # npm
     $ npm config set proxy http://proxy.company.com:8080
+    $ npm config set https-proxy http://proxy.company.com:8080
 
     # gradle
     $ echo "systemProp.https.proxyHost=proxy.company.com" >> $HOME/.gradle/gradle.properties
