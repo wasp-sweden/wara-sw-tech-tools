@@ -1,0 +1,1 @@
+CFLAGS="$OVE_CPPFLAGS $OVE_CPPFLAGS/ncurses" LDFLAGS="$OVE_LDFLAGS" ./configure --enable-swig --enable-64bit-domain --prefix=$OVE_STAGE_DIR/usr

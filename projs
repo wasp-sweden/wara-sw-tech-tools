@@ -1,4 +1,4 @@
----
+# --------------------------------------------------------------------------------
 # Corpus:
 git:
   deps:
@@ -183,6 +183,82 @@ dmce:
     small
     tool
 
+# Metadl and dependencies
+metadl:
+  deps:
+    base
+    _metadl_extendj
+    _metadl_metajap
+    _metadl_mjastadd2
+    _metadl_sppf_earley
+    _metadl_mjastadd2_ttp
+    _metadl_souffle
+  needs:
+    openjdk-8-jdk
+  path:
+    metadl
+  tags:
+    java
+    medium
+    tool
+
+_metadl_souffle:
+  deps:
+    base
+  needs:
+    libtool
+    swig
+    mcpp
+    zlib1g-dev
+    libsqlite3-dev
+  path:
+    _metadl_souffle
+  tags:
+    cplusplus
+    medium
+    tool
+
+_metadl_extendj:
+  deps:
+    base
+  needs:
+    openjdk-8-jdk
+  path:
+    metadl/deps/extendj
+
+_metadl_metajap:
+  deps:
+    base
+  needs:
+    openjdk-8-jdk
+  path:
+    metadl/deps/metajap
+
+_metadl_mjastadd2:
+  deps:
+    base
+  needs:
+    openjdk-8-jdk
+  path:
+    metadl/deps/metajastadd2
+
+_metadl_sppf_earley:
+  deps:
+    base
+  needs:
+    openjdk-8-jdk
+  path:
+    metadl/deps/sppf-earley-parser
+
+_metadl_mjastadd2_ttp
+  deps:
+    base
+  needs:
+    openjdk-8-jdk
+  path:
+    metadl/deps/metajastadd2/tinytemplate
+
+# --------------------------------------------------------------------------------
 # Infrastructure:
 dashboard_components:
   deps:
@@ -196,6 +272,7 @@ dashboard_components:
   path:
     wara-sw-tech-tools-dashboard
 
+# --------------------------------------------------------------------------------
 # Misc:
 
 base:

@@ -1,0 +1,15 @@
+# PROJECT=_metadl_souffle
+# PDIR=${OVE_BASE_DIR}/${PROJECT}
+# WD=`pwd`
+# rmdir ${WD} || echo "No directory ${WD}"
+# if [ -e ${WD} ]; then
+#     if [ readlink ${WD} != ${PDIR} ]; then
+#        echo "Could not delete: ${WD}"
+#        echo "Is the directory not nonempty?"
+#        exit 1
+#     fi
+# fi
+# ln -s ${PDIR} ${WD}
+# cd ${WD}
+
+./bootstrap

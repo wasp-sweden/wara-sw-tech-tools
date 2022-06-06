@@ -142,10 +142,10 @@ The above command will trigger the help text. Please note that dmce can also be 
 
 Adding a new tool comprises the following steps:
 
-* Add a Git repository to `revtab`. Edit the `revtab` file manually or use `ove add-repo`:
+* Add a Git repository to `wara-sw-tech-tools/revtab`. Edit the `revtab` file manually or use `ove add-repo`:
 
         $ ove add-repo https://github.com/foobar/toolA toolA main
-* Add an entry to `projs`. Edit the `projs` file manually or use `ove add-project`:
+* Add an entry to `wara-sw-tech-tools/projs`. Edit the `projs` file manually or use `ove add-project`:
 
         $ ove add-project toolA toolA bootstrap@./autogen.sh configure@./configure build@make
 * Create build scripts in `projects/<tool>`. Skip this step if you already specified the build scripts with `ove add-project`.

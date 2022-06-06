@@ -1,22 +1,31 @@
-# name           fetch URL                                           push URL                                            rev
-.ove             https://github.com/Ericsson/ove.git                 https://github.com/Ericsson/ove.git                 master
+# name                          fetch URL                                                       push URL                                                        rev
+.ove                            https://github.com/Ericsson/ove.git                             https://github.com/Ericsson/ove.git                             master
+
 # corpus
-git              https://github.com/git/git.git                      https://github.com/git/git.git                      v2.34.1
-actor-framework  https://github.com/actor-framework/actor-framework  https://github.com/actor-framework/actor-framework  0.18.5
-redis            https://github.com/redis/redis                      https://github.com/redis/redis                      6.2.5
-doxygen          https://github.com/doxygen/doxygen                  https://github.com/doxygen/doxygen                  Release_1_9_2
-cassandra        https://gitbox.apache.org/repos/asf/cassandra.git   https://gitbox.apache.org/repos/asf/cassandra.git   cassandra-4.0.1
-commons-numbers  https://github.com/apache/commons-numbers           https://github.com/apache/commons-numbers           rel/commons-numbers-1.0
-betty            https://github.com/tm11ajn/betty                    https://github.com/tm11ajn/betty                    080405598662397418b9f5f045b85391c7a0a7cb
+git                             https://github.com/git/git.git                                  https://github.com/git/git.git                                  v2.34.1
+actor-framework                 https://github.com/actor-framework/actor-framework              https://github.com/actor-framework/actor-framework              0.18.5
+redis                           https://github.com/redis/redis                                  https://github.com/redis/redis                                  6.2.5
+doxygen                         https://github.com/doxygen/doxygen                              https://github.com/doxygen/doxygen                              Release_1_9_2
+cassandra                       https://gitbox.apache.org/repos/asf/cassandra.git               https://gitbox.apache.org/repos/asf/cassandra.git               cassandra-4.0.1
+commons-numbers                 https://github.com/apache/commons-numbers                       https://github.com/apache/commons-numbers                       rel/commons-numbers-1.0
+betty                           https://github.com/tm11ajn/betty                                https://github.com/tm11ajn/betty                                080405598662397418b9f5f045b85391c7a0a7cb
 
 # tools
-llvm             https://github.com/llvm/llvm-project                https://github.com/llvm/llvm-project                llvmorg-12.0.1
-spotbugs         https://github.com/spotbugs/spotbugs                https://github.com/spotbugs/spotbugs                4.7.0
-errorprone       https://github.com/google/error-prone               https://github.com/google/error-prone               v2.9.0
-vaccinate        https://github.com/nilsceberg/vaccinate             https://github.com/nilsceberg/vaccinate             main
-depclean         https://github.com/castor-software/depclean         https://github.com/castor-software/depclean         2.0.0
-dmce             https://github.com/PatrikAAberg/dmce.git            https://github.com/PatrikAAberg/dmce.git            master
-dmce-examples    https://github.com/PatrikAAberg/dmce-examples.git   https://github.com/PatrikAAberg/dmce-examples.git   main
+llvm                            https://github.com/llvm/llvm-project                            https://github.com/llvm/llvm-project                            llvmorg-12.0.1
+spotbugs                        https://github.com/spotbugs/spotbugs                            https://github.com/spotbugs/spotbugs                            4.7.0
+errorprone                      https://github.com/google/error-prone                           https://github.com/google/error-prone                           v2.9.0
+vaccinate                       https://github.com/nilsceberg/vaccinate                         https://github.com/nilsceberg/vaccinate                         main
+depclean                        https://github.com/castor-software/depclean                     https://github.com/castor-software/depclean                     2.0.0
+dmce                            https://github.com/PatrikAAberg/dmce.git                        https://github.com/PatrikAAberg/dmce.git                        master
+dmce-examples                   https://github.com/PatrikAAberg/dmce-examples.git               https://github.com/PatrikAAberg/dmce-examples.git               main
+metadl                          https://github.com/lu-cs-sde/metadl.git                         https://github.com/lu-cs-sde/metadl.git                         master
+metadl/deps/extendj             git@github.com:lu-cs-sde/metadl-extendj.git                     git@github.com:lu-cs-sde/metadl-extendj.git                     e6d88f9e1555c74bf6e9527478bb3fd3e18b0fc0
+metadl/deps/metajap             git@github.com:lu-cs-sde/metadl-jastaddparser.git               git@github.com:lu-cs-sde/metadl-jastaddparser.git               cdc4f6cddfa92f57fd4b32c19a8833042c61906a
+metadl/deps/metajastadd2        git@github.com:lu-cs-sde/metadl-jastadd.git                     git@github.com:lu-cs-sde/metadl-jastadd.git                     f4ea01dd5bf50aab4c4f7faa240c3a829522e06a
+metadl/deps/sppf-earley-parser  git@github.com:lu-cs-sde/sppf-earley-parser.git                 git@github.com:lu-cs-sde/sppf-earley-parser.git                 20f5adb007f781339a4138b1ac3d4c6d281d2858
+metadl/deps/metajastadd2/tinytemplate      https://bitbucket.org/jastadd/tinytemplate           https://bitbucket.org/jastadd/tinytemplate                      6b9ec3f3d77141c20dcd5dfb7de122e7d25a81e7
+_metadl_souffle                 https://github.com/creichen/souffle.git                         https://github.com/creichen/souffle.git                         javadl
 
 # infrastructure
-wara-sw-tech-tools-dashboard	https://github.com/wasp-sweden/wara-sw-tech-tools-dashboard	https://github.com/wasp-sweden/wara-sw-tech-tools-dashboard	main
+wara-sw-tech-tools-dashboard    https://github.com/wasp-sweden/wara-sw-tech-tools-dashboard     https://github.com/wasp-sweden/wara-sw-tech-tools-dashboard     main
+git/sha1collisiondetection      https://github.com/cr-marcstevens/sha1collisiondetection.git    https://github.com/cr-marcstevens/sha1collisiondetection.git    855827c583bc30645ba427885caa40c5b81764d2
