@@ -1,1 +1,2 @@
+export METADL_JAVA_RT=${OVE_STAGE_DIR}/usr/share/metadl/rt.jar
 ./gradlew :test

@@ -1,0 +1,5 @@
+export METADL_JAVA_RT=${OVE_STAGE_DIR}/usr/share/metadl/rt.jar
+if [ ! -e ${METADL_JAVA_RT} ]; then
+   mkdir -p  ${OVE_STAGE_DIR}/usr/share/metadl/
+   curl https://fileadmin.cs.lth.se/sde/people/christoph/rt.jar -o ${OVE_STAGE_DIR}/usr/share/metadl/rt.jar
+fi

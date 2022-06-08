@@ -187,6 +187,7 @@ dmce:
 metadl:
   deps:
     base
+    curl
     _metadl_extendj
     _metadl_metajap
     _metadl_mjastadd2
@@ -207,6 +208,8 @@ _metadl_souffle:
     base
   needs:
     libtool
+    flex
+    bison
     swig
     mcpp
     zlib1g-dev
