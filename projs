@@ -207,13 +207,15 @@ _metadl_souffle:
   deps:
     base
   needs:
-    libtool
-    flex
     bison
-    swig
-    mcpp
-    zlib1g-dev
+    flex
+    libffi-dev
+    libncurses-dev
     libsqlite3-dev
+    libtool
+    mcpp
+    swig
+    zlib1g-dev
   path:
     _metadl_souffle
   tags:
