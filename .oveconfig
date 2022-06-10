@@ -1,3 +1,4 @@
+OVE_AUTO_CLONE          1
 OVE_CLONE_MAX_PARALLEL  1
 PYTHONPATH              $OVE_OWEL_DIR/lib
 RESULT_DIR              $OVE_STAGE_DIR/results
