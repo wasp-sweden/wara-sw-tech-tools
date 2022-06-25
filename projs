@@ -1,4 +1,4 @@
-# --------------------------------------------------------------------------------
+---
 # Corpus:
 git:
   deps:
@@ -255,7 +255,7 @@ _metadl_sppf_earley:
   path:
     metadl/deps/sppf-earley-parser
 
-_metadl_mjastadd2_ttp
+_metadl_mjastadd2_ttp:
   deps:
     base
   needs:
