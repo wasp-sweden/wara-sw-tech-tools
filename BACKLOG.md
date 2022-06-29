@@ -42,6 +42,7 @@
 
 ## Miscellaneous
 - [] fix cassandra patch issue in some better way
+- [] daily tagging: maintain a branch `snapshots` that uses `head2revision` to tag that day's specific revisions, to simplify ad-hoc releases and bisecting
 
 # Completed
 
