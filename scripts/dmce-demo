@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 export OVE_LOCAL_ECHO=1
 
 # build dashboard infra
