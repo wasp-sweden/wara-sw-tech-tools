@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# build dashboard infra
+ove buildme dashboard_components
+
 # make sure we have vaccinate and DMCE
 ove fetch vaccinate dmce
 
@@ -8,6 +11,8 @@ ove buildme dmce
 ove dmce set-profile coverage
 
 # instrument vaccinate with some DMCE probes
+git -C $OVE_BASE_DIR/vaccinate checkout vaccinate.c
+git -C $OVE_BASE_DIR/vaccinate clean -dfx
 ove dmce launch -a -- vaccinate
 
 # build vaccinate with instrumentation
