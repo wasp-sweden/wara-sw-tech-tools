@@ -8,6 +8,15 @@ for p in wheel dash==2.1.0 plotly pandas pyyaml Werkzeug==2.0.0; do
 	fi
 done
 
+ove-echo cyan "create a dash-generate-components symlink"
+dash_bin_path=$(find $OVE_STAGE_DIR -type f -name dash-generate-components)
+if [ "x$dash_bin_path" = "x" ]; then
+	ove-echo error "unable to find 'dash-generate-components' script"
+	exit 1
+fi
+mkdir -vp $OVE_STAGE_DIR/usr/bin
+(cd $OVE_STAGE_DIR/usr/bin; ln -f -r -s -v $dash_bin_path)
+
 ove-echo cyan "npm install"
 if ! npm install; then
 	ove-echo error "'npm install' failed"
