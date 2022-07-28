@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-pip install dist/tep_dashboard-0.0.1.tar.gz
-
+if ! pip3 install --user dist/tep_dashboard-0.0.1.tar.gz; then
+	ove-echo error "'pip3 install dist/tep_dashboard-0.0.1.tar.gz' failed"
+	exit 1
+fi

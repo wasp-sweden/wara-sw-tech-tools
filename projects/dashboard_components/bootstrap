@@ -1,9 +1,15 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-python3 -m venv venv
-. venv/bin/activate
-pip3 install wheel
-pip3 install -r requirements.txt
-pip3 install plotly dash pandas pyyaml
-npm install
+for p in wheel dash==2.1.0 plotly pandas pyyaml Werkzeug==2.0.0; do
+	ove-echo cyan "install python package '$p'"
+	if ! pip3 install --user --no-warn-script-location $p; then
+		ove-echo error "'pip3 install --user $p' failed"
+		exit 1
+	fi
+done
 
+ove-echo cyan "npm install"
+if ! npm install; then
+	ove-echo error "'npm install' failed"
+	exit 1
+fi
