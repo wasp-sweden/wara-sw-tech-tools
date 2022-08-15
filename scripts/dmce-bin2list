@@ -3,7 +3,10 @@
 import os, sys
 import numpy as np
 
-user=os.getenv("LOGNAME")
+user=os.getenv("OVE_USER")
+if user is None:
+    sys.stderr.write("error: env OVE_USER not set\n")
+    sys.exit(1)
 dfile = "/tmp/" + user + "/dmce/dmcebuffer.bin"
 data = np.fromfile(dfile, dtype=np.int32)
 data = np.trim_zeros(data)
